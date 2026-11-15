@@ -83,6 +83,36 @@ label.f{display:block;font-size:12px;letter-spacing:.04em;margin:9px 0 3px}
 .cqr{position:absolute;top:8px;right:10px;z-index:2;width:34px;height:34px;padding:0;border:2px solid #d9b247;border-radius:10px;background:#fff7dc;color:var(--ink);cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 0 #d9b247;touch-action:manipulation;-webkit-user-select:none;user-select:none}
 .cqr svg{width:20px;height:20px;display:block;fill:currentColor;pointer-events:none}.cqr:active{transform:translateY(2px);box-shadow:none}.cqr:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 #dq{text-align:center}#dq .hint{margin:6px 0}#dq canvas{display:block;margin:12px auto 4px;width:min(280px,68vw);height:auto;aspect-ratio:1;image-rendering:pixelated;background:#fff;border:6px solid #fff;border-radius:10px;box-shadow:0 0 0 2px #e3c36a}#dq #qrn{font:400 20px 'Special Elite',serif;margin:4px 0 0}#dq .bkl .b{text-align:left}
+
+/* ---------- Desk Mode ---------- */
+#desk{position:fixed;inset:0;z-index:40;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;color:#fff3cf}
+#desk[hidden]{display:none}
+#dwood{position:absolute;inset:0;background:
+ radial-gradient(110% 80% at 20% 8%,rgba(255,228,165,.42),rgba(255,228,165,0) 58%),
+ radial-gradient(150% 120% at 50% 50%,rgba(0,0,0,0) 52%,rgba(22,8,0,.62) 100%),
+ url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='900'%20height='760'%3E%3Cdefs%3E%3Cfilter%20id='g0'%20x='0'%20y='0'%20width='100%25'%20height='100%25'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.005%200.5'%20numOctaves='4'%20seed='7'/%3E%3CfeColorMatrix%20values='0%200%200%200%200.20%20%200%200%200%200%200.09%20%200%200%200%200%200.02%20%200%200%200%201.25%20-0.42'/%3E%3C/filter%3E%3Cfilter%20id='g1'%20x='0'%20y='0'%20width='100%25'%20height='100%25'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.005%200.5'%20numOctaves='4'%20seed='19'/%3E%3CfeColorMatrix%20values='0%200%200%200%200.20%20%200%200%200%200%200.09%20%200%200%200%200%200.02%20%200%200%200%201.25%20-0.42'/%3E%3C/filter%3E%3Cfilter%20id='g2'%20x='0'%20y='0'%20width='100%25'%20height='100%25'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.005%200.5'%20numOctaves='4'%20seed='31'/%3E%3CfeColorMatrix%20values='0%200%200%200%200.20%20%200%200%200%200%200.09%20%200%200%200%200%200.02%20%200%200%200%201.25%20-0.42'/%3E%3C/filter%3E%3Cfilter%20id='g3'%20x='0'%20y='0'%20width='100%25'%20height='100%25'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.005%200.5'%20numOctaves='4'%20seed='43'/%3E%3CfeColorMatrix%20values='0%200%200%200%200.20%20%200%200%200%200%200.09%20%200%200%200%200%200.02%20%200%200%200%201.25%20-0.42'/%3E%3C/filter%3E%3Cfilter%20id='k'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.9%200.05'%20numOctaves='2'%20seed='3'/%3E%3CfeColorMatrix%20values='0%200%200%200%200.15%20%200%200%200%200%200.07%20%200%200%200%200%200.02%20%200%200%200%200.9%20-0.35'/%3E%3C/filter%3E%3C/defs%3E%3Crect%20y='0'%20width='900'%20height='190'%20fill='%23b27a44'/%3E%3Crect%20y='0'%20width='900'%20height='190'%20filter='url%28%23g0%29'%20opacity='.62'/%3E%3Crect%20y='190'%20width='900'%20height='190'%20fill='%23a46d38'/%3E%3Crect%20y='190'%20width='900'%20height='190'%20filter='url%28%23g1%29'%20opacity='.62'/%3E%3Crect%20y='380'%20width='900'%20height='190'%20fill='%23b8814a'/%3E%3Crect%20y='380'%20width='900'%20height='190'%20filter='url%28%23g2%29'%20opacity='.62'/%3E%3Crect%20y='570'%20width='900'%20height='190'%20fill='%23a06833'/%3E%3Crect%20y='570'%20width='900'%20height='190'%20filter='url%28%23g3%29'%20opacity='.62'/%3E%3Crect%20width='900'%20height='760'%20filter='url%28%23k%29'%20opacity='.18'/%3E%3Cpath%20d='M0%20189H900'%20stroke='%232a1203'%20stroke-opacity='.62'%20stroke-width='3'/%3E%3Cpath%20d='M0%20192H900'%20stroke='%23ffe3b4'%20stroke-opacity='.14'%20stroke-width='2'/%3E%3Cpath%20d='M0%20379H900'%20stroke='%232a1203'%20stroke-opacity='.62'%20stroke-width='3'/%3E%3Cpath%20d='M0%20382H900'%20stroke='%23ffe3b4'%20stroke-opacity='.14'%20stroke-width='2'/%3E%3Cpath%20d='M0%20569H900'%20stroke='%232a1203'%20stroke-opacity='.62'%20stroke-width='3'/%3E%3Cpath%20d='M0%20572H900'%20stroke='%23ffe3b4'%20stroke-opacity='.14'%20stroke-width='2'/%3E%3Cpath%20d='M0%20759H900'%20stroke='%232a1203'%20stroke-opacity='.62'%20stroke-width='3'/%3E%3Cpath%20d='M0%20762H900'%20stroke='%23ffe3b4'%20stroke-opacity='.14'%20stroke-width='2'/%3E%3Cpath%20d='M310%200v190'%20stroke='%232a1203'%20stroke-opacity='.55'%20stroke-width='2.5'/%3E%3Cpath%20d='M312.5%200v190'%20stroke='%23ffe3b4'%20stroke-opacity='.12'%20stroke-width='2'/%3E%3Cpath%20d='M640%20190v190'%20stroke='%232a1203'%20stroke-opacity='.55'%20stroke-width='2.5'/%3E%3Cpath%20d='M642.5%20190v190'%20stroke='%23ffe3b4'%20stroke-opacity='.12'%20stroke-width='2'/%3E%3Cpath%20d='M120%20380v190'%20stroke='%232a1203'%20stroke-opacity='.55'%20stroke-width='2.5'/%3E%3Cpath%20d='M122.5%20380v190'%20stroke='%23ffe3b4'%20stroke-opacity='.12'%20stroke-width='2'/%3E%3Cpath%20d='M520%20570v190'%20stroke='%232a1203'%20stroke-opacity='.55'%20stroke-width='2.5'/%3E%3Cpath%20d='M522.5%20570v190'%20stroke='%23ffe3b4'%20stroke-opacity='.12'%20stroke-width='2'/%3E%3C/svg%3E") 0 0/900px 760px,#a8693a}
+#dsurf{position:absolute;inset:0}
+.zone{position:absolute;bottom:max(12px,env(safe-area-inset-bottom));width:min(46vw,230px);height:116px;border-radius:14px;pointer-events:none;z-index:1;background:linear-gradient(rgba(20,8,0,.46),rgba(20,8,0,.26));box-shadow:inset 0 3px 12px rgba(0,0,0,.6),0 1px 0 rgba(255,220,160,.28);border:2px solid rgba(255,225,170,.16);font:700 12px 'Courier Prime',monospace;letter-spacing:.09em;text-transform:uppercase;color:#ffe9b8;transition:background .2s,box-shadow .2s}
+.zone.l{left:12px}.zone.r{right:12px}
+.zone span{position:absolute;left:10px;top:7px;text-shadow:0 1px 0 rgba(0,0,0,.5)}.zone b{position:absolute;right:11px;top:7px;opacity:.85}
+.zone.hot{background:rgba(255,200,80,.3);box-shadow:inset 0 3px 12px rgba(0,0,0,.4),0 0 0 3px rgba(240,184,35,.75)}
+.dbar{position:absolute;left:0;right:0;top:0;z-index:2000;display:flex;align-items:center;gap:8px;padding:max(10px,env(safe-area-inset-top)) 12px 18px;background:linear-gradient(rgba(25,10,0,.72),rgba(25,10,0,0))}
+.dbar .b{padding:8px 12px;font-size:13px;white-space:nowrap}.dbar .b:disabled{opacity:.5}.dsp{flex:1}
+.dhint{position:absolute;left:12px;right:12px;top:calc(max(10px,env(safe-area-inset-top)) + 46px);z-index:1999;text-align:center;font-size:12px;color:#ffeec4;text-shadow:0 1px 2px rgba(0,0,0,.7);pointer-events:none}
+.dc{position:absolute;left:0;top:0;width:210px;height:128px;touch-action:none;cursor:grab;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;will-change:transform,opacity;transform-origin:50% 50%}
+.dc:active{cursor:grabbing}
+.dsh{position:absolute;inset:6px 4px 2px 6px;border-radius:8px;background:#1c0d02;filter:blur(7px);pointer-events:none}
+.dface{position:absolute;inset:0;border-radius:6px 6px 4px 4px;background-color:#fbf0c4;background-image:linear-gradient(transparent 21px,#e6b72f 21px);background-size:100% 22px;background-position:0 8px;padding:8px 10px;box-shadow:inset 0 0 0 1px rgba(150,110,20,.3),inset 0 -2px 0 #ecd98c;overflow:hidden;color:var(--ink);font:13px/22px 'Courier Prime',monospace}
+.dn{font:400 17px/22px 'Special Elite',serif;color:#1d5fd1;padding-right:56px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dr{height:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dact{position:absolute;top:5px;right:5px;display:flex;gap:4px}
+.dact button{width:24px;height:24px;border:1.5px solid #d9b247;border-radius:7px;background:#fff7dc;color:#2b2418;padding:0;display:grid;place-items:center;cursor:pointer;touch-action:manipulation}
+.dact svg{width:14px;height:14px;fill:currentColor;display:block;pointer-events:none}
+.dact button:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.dc.pinned .dpin{background:#e04b3a;color:#fff;border-color:#a62f20}
+.dnail{position:absolute;left:50%;top:-6px;width:17px;height:17px;margin-left:-8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffb8aa,#d8321f 55%,#8f1b0e);box-shadow:2px 4px 4px rgba(0,0,0,.55);display:none;pointer-events:none}
+.dc.pinned .dnail{display:block}
+@media (max-width:400px){.dbar .b{padding:8px 9px;font-size:12px}}
 </style>
 </head>
 <body>
@@ -113,6 +143,7 @@ label.f{display:block;font-size:12px;letter-spacing:.04em;margin:9px 0 3px}
     <button class="b" id="edit" data-i18n="edit">Edit</button>
     <button class="b" id="addc" data-i18n="addc">Add to contacts</button>
     <button class="b p" id="qrb" data-i18n="qr">QR code</button>
+    <button class="b p" id="deskb">Desk</button>
     <button class="b" id="del" data-i18n="del">Delete</button>
     <button class="b" id="delall" data-i18n="delAll">Delete all</button>
     <button class="b" id="pick" data-i18n="pick">Pick from phone</button>
@@ -159,6 +190,15 @@ label.f{display:block;font-size:12px;letter-spacing:.04em;margin:9px 0 3px}
   <div class="bkl"><button class="b p" id="bkJ"><span data-i18n="bkJson"></span><small data-i18n="bkJsonS"></small></button><button class="b" id="bkV"><span data-i18n="bkVcf"></span><small data-i18n="bkVcfS"></small></button><button class="b" id="bkC"><span data-i18n="bkCsv"></span><small data-i18n="bkCsvS"></small></button></div>
   <div class="row"><button class="b" id="bkX" data-i18n="close">Close</button></div></dialog>
 <dialog id="dh"><h2 data-i18n="helpTitle">Import your contacts</h2><div id="hb"></div><div class="row"><button class="b p" id="hx" data-i18n="close">Close</button></div></dialog>
+<section id="desk" hidden aria-label="Desk">
+  <div id="dwood"></div>
+  <div id="dsurf">
+    <div class="zone l" data-z="later"><span data-i18n="deskLater">Later</span><b>0</b></div>
+    <div class="zone r" data-z="archive"><span data-i18n="deskArchive">Archive</span><b>0</b></div>
+  </div>
+  <header class="dbar"><button type="button" class="b" id="dBack" data-i18n="deskBack">‹ Back to Rolodex</button><span class="dsp"></span><button type="button" class="b p" id="dPull" data-i18n="deskPull">Pull a card</button><button type="button" class="b" id="dClear" data-i18n="deskClear">Clear desk</button></header>
+  <p class="dhint" id="dHint"></p>
+</section>
 <div id="toast" role="status"></div>
 
 <script>/* qrcode-generator 1.4.4 (MIT, Kazuhiko Arase) */
@@ -174,7 +214,7 @@ en:{sub:'Flip to a card. Ping them on WhatsApp.',search:'Search name, company or
 es:{sub:'Pasa a una ficha. Escríbeles por WhatsApp.',search:'Buscar nombre, empresa o número',searchAria:'Buscar fichas',prev:'Ficha anterior',call:'Llamar',addc:'Añadir a contactos',addcDone:'Archivo de contacto listo. Ábrelo para añadir a esta persona a los contactos de tu móvil.',bk:'Copia de seguridad',bkTitle:'Copia de seguridad y exportar',bkHint:'Guarda todas tus fichas. Para restaurarlas, suelta el archivo .json en el recuadro de importar.',bkCount:n=>`${n} ficha${n===1?'':'s'} lista${n===1?'':'s'} para guardar`,bkJson:'Copia de seguridad (.json)',bkJsonS:'Todos los campos, ideal para restaurar',bkVcf:'Contactos (.vcf)',bkVcfS:'Se abre en Google, iCloud, Outlook y tu móvil',bkCsv:'Hoja de cálculo (.csv)',bkCsvS:'Se abre en Excel y Google Sheets',saved:'Descarga iniciada',noneToSave:'No hay fichas que guardar',help:'Ayuda',helpTitle:'Importa tus contactos',close:'Cerrar',helpData:[["Exportar desde Gmail (Google Contactos)", ["Abre contacts.google.com en tu ordenador.", "Marca los contactos que quieras, o no marques ninguno para llevarte todos.", "Pulsa Exportar (menú de la izquierda o menú ⋮), elige CSV de Google o vCard y pulsa Exportar."]], ["Exportar desde Outlook en Windows", ["Nuevo Outlook / outlook.com: abre Personas, pulsa Administrar, después Exportar contactos y elige Todos los contactos.", "Outlook clásico: Archivo > Abrir y exportar > Importar/Exportar > Exportar a un archivo > Valores separados por comas > carpeta Contactos > Finalizar.", "El archivo se guarda en tu carpeta Descargas."]], ["Envía el archivo a tu móvil", ["WhatsApp: abre WhatsApp Web o de escritorio, entra en el chat contigo mismo (Enviarte un mensaje), adjunta el archivo como Documento y envíalo. En el móvil, abre ese chat, toca el archivo y elige Guardar o Compartir > Archivos.", "Otras formas: envíatelo por correo, súbelo a Google Drive o iCloud Drive, AirDrop (iPhone), Quick Share (Android) o un cable USB."]], ["Impórtalo en RoloPro", ["En el móvil, abre RoloPro y toca el recuadro de líneas discontinuas (\"Suelta aquí un archivo .vcf, .csv o .json, o toca para elegirlo\").", "Elige el archivo desde Archivos, Descargas o Drive.", "Tus fichas aparecen en segundos. Los contactos que ya tienes se actualizan, sin duplicarse.", "Consejo: configura antes el Prefijo de país por defecto para que los botones de WhatsApp y llamada funcionen con números locales."]]],mail:'Enviar email',noEmail:'Esta ficha no tiene correo electrónico',next:'Ficha siguiente',ping:'WHATSAPP',add:'Añadir ficha',edit:'Editar',del:'Eliminar',delAll:'Eliminar todas',pick:'Elegir del móvil',sndOn:'Sonido activado',sndOff:'Sonido desactivado',rnd:'Random',autoOn:'Auto',autoOff:'Pausar',drop:'Suelta aquí un archivo .vcf, .csv o .json, o toca para elegirlo',cc:'Prefijo de país por defecto',newCard:'Nueva ficha',editCard:'Editar ficha',fName:'Nombre',fCompany:'Empresa',fPhone:'Teléfono',fWa:'Número de WhatsApp (si es distinto)',fCat:'Categoría',fNotes:'Notas',cat_Friend:'Amigo',cat_Family:'Familia',cat_Work:'Trabajo',cat_Client:'Cliente',cat_Other:'Otro',cancel:'Cancelar',save:'Guardar ficha',msgTo:'Mensaje para',hint:'Se adjunta la imagen de RoloPro y se añade "RoloPro easylandx.github.io/rolopro" en la línea siguiente.',openWa:'Abrir WhatsApp',tel:'Tel.',email:'Email',addr:'Dirección',fEmail:'Correo electrónico',fAddr:'Dirección',of:'de',zero:'0 fichas',noCards:'No se encontraron fichas',noCardsHint:'Añade una ficha o borra la búsqueda.',noUnder:l=>`No hay fichas con la ${l}`,addFirst:'Primero añade una ficha',noPhone:'Esta ficha no tiene número de teléfono',filed:'Ficha guardada',noDel:'No hay ninguna ficha que eliminar',delCardQ:n=>`¿Eliminar la ficha de ${n}?`,noneToDel:'No hay fichas que eliminar',delAllQ:n=>`¿Eliminar las ${n} fichas? Esta acción no se puede deshacer.`,allDeleted:'Todas las fichas eliminadas',filedN:n=>`${n} ficha${n>1?'s':''} nueva${n>1?'s':''} guardada${n>1?'s':''}`,nothingNew:'No hay nada nuevo que guardar',noVcf:'No se encontraron contactos en ese archivo',importDone:(n,u)=>`${n} nuevas, ${u} actualizadas`,fExtra:'Otros campos (uno por línea, Etiqueta: valor)',noPicker:'El selector de contactos solo funciona en Chrome para Android. Importa un archivo .vcf.',hi:n=>`¡Hola ${n}! `,copied:'Imagen copiada. Pulsa Ctrl+V en el chat de WhatsApp para añadirla.',copiedM:'Imagen copiada. En el chat, toca el cuadro de mensaje y elige Pegar para añadirla.',copyFail:'No se pudo copiar la imagen. Tu mensaje está listo en WhatsApp.',noCopy:'Tu navegador no puede copiar la imagen. Tu mensaje está listo en WhatsApp.',presets:['¡Hola! ¿Tienes un minuto?','¡Muchas gracias!','¿Podemos hablar más tarde hoy?','¡Feliz cumpleaños!'],jump:l=>`Ir a la ${l}`,alt:'Fichero de escritorio con teclas laterales de la A a la Z'}
 };
 Object.assign(I18N.en,{scan:'Scan card',scanTitle:'Scan a business card',scanHint:'Fill the frame with the card. A QR contact code is read automatically.',scanQrLink:'QR link found. Now capture the printed card.',scanQrDone:l=>`QR contact read. Language: ${l}. Check the details and save.`,scanCapture:'Capture',scanPhoto:'Use a photo',scanReading:'Reading the card…',scanLoad:'Loading the reader (first time only)…',scanNoCam:'Camera not available. Choose a photo instead.',scanFail:'Could not read any text. Try again with more light.',scanDone:l=>`Card read. Language: ${l}. Check the details and save.`,cardLang:'Card language',langNone:'Not set',scanErr:'The reader could not load. Check your connection and try again.',fTitle:'Job title'});
-Object.assign(I18N.es,{scan:'Escanear tarjeta',scanTitle:'Escanear una tarjeta de visita',scanHint:'Encuadra la tarjeta. Si tiene un código QR de contacto, se lee solo.',scanQrLink:'Enlace QR encontrado. Ahora captura la tarjeta impresa.',scanQrDone:l=>`Contacto QR leído. Idioma: ${l}. Revisa los datos y guarda.`,scanCapture:'Capturar',scanPhoto:'Usar una foto',scanReading:'Leyendo la tarjeta…',scanLoad:'Cargando el lector (solo la primera vez)…',scanNoCam:'No se pudo usar la cámara. Elige una foto.',scanFail:'No se pudo leer texto. Prueba de nuevo con más luz.',scanDone:l=>`Tarjeta leída. Idioma: ${l}. Revisa los datos y guarda.`,cardLang:'Idioma de la tarjeta',langNone:'Sin definir',scanErr:'No se pudo cargar el lector. Revisa tu conexión e inténtalo de nuevo.',fTitle:'Cargo'});Object.assign(I18N.en,{qr:'QR code',qrTitle:'Share this card',qrHint:'Scan with any phone camera to save this contact.',qrWa:'Send as vCard on WhatsApp',qrWaS:'Opens the share sheet and sends the contact file',qrSave:'Save contact file (.vcf)',qrSaveS:'Opens in your phone, Google, iCloud and Outlook contacts',qrWaFallback:'Contact file saved. In WhatsApp, attach it as a Document. The details are also in the message.',qrFail:'This card has too much data for a QR code. Use the .vcf file instead.'});Object.assign(I18N.es,{qr:'Código QR',qrTitle:'Comparte esta ficha',qrHint:'Escanéalo con la cámara de cualquier móvil para guardar este contacto.',qrWa:'Enviar como vCard por WhatsApp',qrWaS:'Abre el menú de compartir y envía el archivo de contacto',qrSave:'Guardar archivo de contacto (.vcf)',qrSaveS:'Se abre en los contactos de tu móvil, Google, iCloud y Outlook',qrWaFallback:'Archivo de contacto guardado. En WhatsApp, adjúntalo como Documento. Los datos también van en el mensaje.',qrFail:'Esta ficha tiene demasiados datos para un código QR. Usa el archivo .vcf.'});let lang=st.get('rc.lang',/^es/i.test(navigator.language||'')?'es':'en');if(!I18N[lang])lang='en';
+Object.assign(I18N.es,{scan:'Escanear tarjeta',scanTitle:'Escanear una tarjeta de visita',scanHint:'Encuadra la tarjeta. Si tiene un código QR de contacto, se lee solo.',scanQrLink:'Enlace QR encontrado. Ahora captura la tarjeta impresa.',scanQrDone:l=>`Contacto QR leído. Idioma: ${l}. Revisa los datos y guarda.`,scanCapture:'Capturar',scanPhoto:'Usar una foto',scanReading:'Leyendo la tarjeta…',scanLoad:'Cargando el lector (solo la primera vez)…',scanNoCam:'No se pudo usar la cámara. Elige una foto.',scanFail:'No se pudo leer texto. Prueba de nuevo con más luz.',scanDone:l=>`Tarjeta leída. Idioma: ${l}. Revisa los datos y guarda.`,cardLang:'Idioma de la tarjeta',langNone:'Sin definir',scanErr:'No se pudo cargar el lector. Revisa tu conexión e inténtalo de nuevo.',fTitle:'Cargo'});Object.assign(I18N.en,{qr:'QR code',qrTitle:'Share this card',qrHint:'Scan with any phone camera to save this contact.',qrWa:'Send as vCard on WhatsApp',qrWaS:'Opens the share sheet and sends the contact file',qrSave:'Save contact file (.vcf)',qrSaveS:'Opens in your phone, Google, iCloud and Outlook contacts',qrWaFallback:'Contact file saved. In WhatsApp, attach it as a Document. The details are also in the message.',qrFail:'This card has too much data for a QR code. Use the .vcf file instead.'});Object.assign(I18N.es,{qr:'Código QR',qrTitle:'Comparte esta ficha',qrHint:'Escanéalo con la cámara de cualquier móvil para guardar este contacto.',qrWa:'Enviar como vCard por WhatsApp',qrWaS:'Abre el menú de compartir y envía el archivo de contacto',qrSave:'Guardar archivo de contacto (.vcf)',qrSaveS:'Se abre en los contactos de tu móvil, Google, iCloud y Outlook',qrWaFallback:'Archivo de contacto guardado. En WhatsApp, adjúntalo como Documento. Los datos también van en el mensaje.',qrFail:'Esta ficha tiene demasiados datos para un código QR. Usa el archivo .vcf.'});Object.assign(I18N.en,{desk:'Desk',onDesk:n=>`${n} on desk`,deskBack:'‹ Back to Rolodex',deskPull:'Pull a card',deskClear:'Clear desk',deskLater:'Later',deskArchive:'Archive',deskPin:'Pin card',deskUnpin:'Unpin card',deskReturn:'Remove from desk',deskHint:'Drag and flick cards. Double-tap to pin. Throw them into a tray.',deskEmpty:'Tap Pull a card, or long-press a card in the rolodex.',deskNoCards:'No cards left in the rolodex',deskPinned:'Pinned. Double-tap to unpin.'});Object.assign(I18N.es,{desk:'Escritorio',onDesk:n=>`${n} en el escritorio`,deskBack:'‹ Volver al Rolodex',deskPull:'Sacar una ficha',deskClear:'Vaciar escritorio',deskLater:'Más tarde',deskArchive:'Archivo',deskPin:'Fijar ficha',deskUnpin:'Soltar ficha',deskReturn:'Quitar del escritorio',deskHint:'Arrastra y lanza las fichas. Toca dos veces para fijar. Lánzalas a una bandeja.',deskEmpty:'Pulsa Sacar una ficha, o mantén pulsada una ficha del rolodex.',deskNoCards:'No quedan fichas en el rolodex',deskPinned:'Fijada. Toca dos veces para soltarla.'});let lang=st.get('rc.lang',/^es/i.test(navigator.language||'')?'es':'en');if(!I18N[lang])lang='en';
 const t=(k,...a)=>{const v=I18N[lang][k]??I18N.en[k];return typeof v==='function'?v(...a):v};
 const catName=c=>I18N[lang]['cat_'+c]||c;
 function buildChips(){const box=$('chips');box.innerHTML='';t('presets').forEach(p=>{const b=document.createElement('button');b.type='button';b.className='b';b.textContent=p;b.onclick=()=>{$('pm').value=p};box.append(b)})}
@@ -186,7 +226,7 @@ function applyLang(){
   document.querySelectorAll('[data-alt]').forEach(e=>e.alt=t(e.dataset.alt));
   document.querySelectorAll('.key').forEach(k=>k.setAttribute('aria-label',t('jump',k.dataset.l)));
   document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang));
-  buildChips();buildHelp();autoLabel();sndLabel();paint();
+  buildChips();buildHelp();autoLabel();sndLabel();paint();deskRefresh();
 }
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;st.set('rc.lang',lang);applyLang();});
 const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
@@ -220,11 +260,11 @@ $('snd').onclick=()=>{sound=!sound;st.set('rc.snd',sound?'1':'0');sndLabel();bam
 
 /* ---------- Rolodex state & rendering ---------- */
 let V=[],idx=0,busy=false;
-function build(keep){const s=norm($('q').value);V=all.filter(c=>!s||norm([c.name,c.company,c.title,c.email,c.addr,c.phone,c.wa,c.notes,c.cat,...(c.extra||[]).map(x=>x[1])].join(' ')).includes(s)).sort((a,b)=>a.name.localeCompare(b.name,undefined,{sensitivity:'base'}));const i=V.findIndex(c=>c.id===keep);idx=i>=0?i:0}
+function build(keep){const s=norm($('q').value);pruneDesk();V=all.filter(c=>!s||norm([c.name,c.company,c.title,c.email,c.addr,c.phone,c.wa,c.notes,c.cat,...(c.extra||[]).map(x=>x[1])].join(' ')).includes(s)).sort((a,b)=>a.name.localeCompare(b.name,undefined,{sensitivity:'base'}));const i=V.findIndex(c=>c.id===keep);idx=i>=0?i:0}
 [...A].forEach((ch,i)=>{const b=document.createElement('button');b.className='key';b.textContent=ch;b.dataset.l=ch;b.setAttribute('aria-label','Jump to '+ch);b.onclick=()=>jump(ch);(i<13?$('rl'):$('rr')).append(b)});
 function paint(){
   const c=V[idx];
-  $('count').textContent=V.length?`${idx+1} / ${V.length}`+($('q').value?` ${t('of')} ${all.length}`:''):t('zero');
+  $('count').textContent=V.length?`${idx+1} / ${V.length}`+($('q').value?` ${t('of')} ${all.length}`:''):t('zero');if(deskOut())$('count').textContent+=' · '+t('onDesk',deskOut());
   const l=c?L(c):'';const i=A.indexOf(l);
   $('itab').textContent=!c?'—':i<0?'#':A[i-i%2]+'–'+A[i-i%2+1];
   const has=new Set(V.map(L));
@@ -257,7 +297,7 @@ async function fling(dir,n){const len=V.length;if(busy||len<2)return;if(n<=1)ret
 (()=>{const st_=$('stack');let pts=null,pid=null;
   st_.addEventListener('pointerdown',e=>{if(e.button||e.target.closest('.pull,.cqr'))return;pid=e.pointerId;pts=[{t:performance.now(),x:e.clientX,y:e.clientY}];try{st_.setPointerCapture(pid)}catch(_){}});
   st_.addEventListener('pointermove',e=>{if(!pts||e.pointerId!==pid)return;pts.push({t:performance.now(),x:e.clientX,y:e.clientY});if(pts.length>40)pts.shift()});
-  const end=e=>{if(!pts||e.pointerId!==pid)return;const P=pts;pts=null;if(e.type==='pointercancel')return;
+  const end=e=>{if(window.__lp&&e.pointerId===pid){window.__lp=false;pts=null;return}if(!pts||e.pointerId!==pid)return;const P=pts;pts=null;if(e.type==='pointercancel')return;
     const now=performance.now(),f=P[0],l=P[P.length-1],dx=l.x-f.x,dy=l.y-f.y,vert=Math.abs(dy)>=Math.abs(dx),d=vert?dy:dx;
     const r=P.find(q=>q.t>=now-120)||l,dt=Math.max(l.t-r.t,16),dr=vert?l.y-r.y:l.x-r.x,v=Math.abs(dr)/dt;
     if(Math.abs(d)<(v>=.3?24:40))return;
@@ -484,6 +524,192 @@ $('qrW').onclick=async()=>{
     u=(isMobile?'whatsapp://send':'https://wa.me/')+'?text='+encodeURIComponent(msg);
   toast(t('qrWaFallback'),7000);
   setTimeout(()=>{if(isMobile)location.href=u;else{const w=window.open(u,'_blank','noopener');if(!w)location.href=u}},600)};
+
+/* ================= DESK MODE: virtual desk physics =================
+   Long-press a rolodex card (or tap "Desk") to pull cards out onto a wooden desk.
+   Cards are free bodies: momentum, friction, wall bounce, soft stacking, pins,
+   "Later" / "Archive" trays. Layout is saved in localStorage ('rolopro.desk.v1').
+   Pulling a card puts a COPY on the desk; the rolodex keeps the original, so you can pull as many copies as you like. */
+const DK='rolopro.desk.v1',CW=210,CH=128,ZS=.62,FR=3.3,VMAX=3200,REDUCE=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const DS={items:[]};
+let deskOpen=false,DW=innerWidth,DH=innerHeight,BAR=58,zTop=10,deskRun=false,deskLast=0,ZR={},handoff=null,pinTip=false,deskSaveT=0,lpT=null,lpX=0,lpY=0;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),cardOf=id=>all.find(c=>c.id===id),deskHas=id=>DS.items.some(i=>i.id===id),deskOut=()=>DS.items.length;
+const hap=ms=>{try{navigator.vibrate&&navigator.vibrate(ms)}catch(e){}};
+
+/* ----- items ----- */
+function newItem(id,o={}){return Object.assign({id,x:DW/2,y:DH/2,vx:0,vy:0,a:0,va:0,z:10,pinned:false,zone:null,zoneT:0,held:false,pid:null,tx:0,ty:0,gx:0,gy:0,hvx:0,hvy:0,rx:0,ry:0,sw:0,lift:0,s:1,op:1,leaving:false,lt:0,samp:[],lastTap:0,el:null,sh:null},o)}
+function mkEl(it){
+  const c=cardOf(it.id);if(!c)return;
+  const e=document.createElement('div');e.className='dc'+(it.pinned?' pinned':'');e.dataset.id=it.id;
+  e.innerHTML=`<div class="dsh"></div><div class="dface"><div class="dn">${esc(c.name)}</div><div class="dr">${esc([c.company!==c.name?c.company:'',c.title].filter(Boolean).join(' · '))||'&nbsp;'}</div><div class="dr">${esc(c.phone||c.wa)||'&nbsp;'}</div><div class="dr">${esc(c.email)||'&nbsp;'}</div><div class="dact"><button type="button" class="dpin"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="5.5"/><path d="M11 12h2l-.6 10h-.8z"/></svg></button><button type="button" class="dret"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7V3L2 9.5 9 16v-4c5 0 9 1.6 11 7 0-6.5-4-12-11-12z"/></svg></button></div></div><div class="dnail"></div>`;
+  it.el=e;it.sh=e.firstChild;$('dsurf').append(e);setLabels(it);render(it)}
+function setLabels(it){if(!it.el)return;const p=it.el.querySelector('.dpin'),r=it.el.querySelector('.dret');
+  p.setAttribute('aria-label',t(it.pinned?'deskUnpin':'deskPin'));p.title=t(it.pinned?'deskUnpin':'deskPin');r.setAttribute('aria-label',t('deskReturn'));r.title=t('deskReturn')}
+const itemOf=el=>DS.items.find(i=>i.el===el);
+
+/* ----- persistence ----- */
+function saveDesk(){clearTimeout(deskSaveT);st.set(DK,JSON.stringify({items:DS.items.filter(i=>!i.leaving).map(i=>({id:i.id,nx:+(i.x/DW).toFixed(4),ny:+(i.y/DH).toFixed(4),a:+i.a.toFixed(1),p:i.pinned?1:0,zone:i.zone,z:i.z}))}))}
+const saveDeskSoon=()=>{clearTimeout(deskSaveT);deskSaveT=setTimeout(saveDesk,250)};
+function loadDesk(){try{const j=JSON.parse(st.get(DK,'null'));if(j&&Array.isArray(j.items))j.items.forEach(i=>{if(i&&cardOf(i.id))DS.items.push(newItem(i.id,{x:(i.nx??.5)*DW,y:(i.ny??.5)*DH,a:i.a||0,pinned:!!i.p,zone:i.zone==='later'||i.zone==='archive'?i.zone:null,zoneT:DS.items.length,z:i.z||10,s:i.zone?ZS:1}))})}catch(e){}
+  zTop=Math.max(10,...DS.items.map(i=>i.z))}
+function pruneDesk(){const n=DS.items.length;DS.items=DS.items.filter(i=>{if(cardOf(i.id))return true;i.el&&i.el.remove();return false});if(DS.items.length!==n){saveDesk();deskRefresh()}}
+
+/* ----- sound (procedural: no audio files) ----- */
+let SB=null,SN=null,SG=null,NB2=null;
+function noiseBuf(a){if(!NB2){NB2=a.createBuffer(1,a.sampleRate*2,a.sampleRate);const d=NB2.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1}return NB2}
+function deskSoundStart(){if(!sound||SN)return;try{const a=ctx();SN=a.createBufferSource();SN.buffer=noiseBuf(a);SN.loop=true;const bp=a.createBiquadFilter();bp.type='bandpass';bp.frequency.value=1500;bp.Q.value=.6;SG=a.createGain();SG.gain.value=0;SN.connect(bp).connect(SG).connect(a.destination);SN.start()}catch(e){SN=SG=null}}
+function deskSoundStop(){try{SN&&SN.stop()}catch(e){}SN=SG=null}
+function slideSnd(v){if(!SG||!AC)return;try{SG.gain.setTargetAtTime(sound?Math.min(.075,v/2600*.075):0,AC.currentTime,.05)}catch(e){}}
+function tick(t0,g,f,dur,q=1){const a=ctx(),s=a.createBufferSource(),bp=a.createBiquadFilter(),gn=a.createGain();s.buffer=noiseBuf(a);bp.type='bandpass';bp.frequency.value=f;bp.Q.value=q;gn.gain.setValueAtTime(g,t0);gn.gain.exponentialRampToValueAtTime(.0001,t0+dur);s.connect(bp).connect(gn).connect(a.destination);s.start(t0,Math.random()*1.5,dur+.02)}
+function thud(v=1){if(!sound)return;try{const a=ctx(),t0=a.currentTime+.003,o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(135,t0);o.frequency.exponentialRampToValueAtTime(52,t0+.1);g.gain.setValueAtTime(.0001,t0);g.gain.exponentialRampToValueAtTime(.17*v,t0+.006);g.gain.exponentialRampToValueAtTime(.0001,t0+.15);o.connect(g).connect(a.destination);o.start(t0);o.stop(t0+.17);tick(t0,.06*v,900,.05)}catch(e){}}
+function rustle(v=1){if(!sound)return;try{const t0=ctx().currentTime+.002;tick(t0,.09*v,3200,.11,.8);tick(t0+.05,.05*v,2200,.09,.8)}catch(e){}}
+function pinClick(){if(!sound)return;try{const t0=ctx().currentTime+.002;tick(t0,.14,4200,.03,3);thud(.45)}catch(e){}}
+
+/* ----- geometry ----- */
+function measure(){const d=$('desk');DW=d.clientWidth||innerWidth;DH=d.clientHeight||innerHeight;const b=document.querySelector('.dbar');BAR=b&&d.clientWidth?Math.round(b.getBoundingClientRect().bottom-8):58;
+  ZR={};document.querySelectorAll('.zone').forEach(z=>{const r=z.getBoundingClientRect();ZR[z.dataset.z]={el:z,x0:r.left,y0:r.top,x1:r.right,y1:r.bottom,cx:(r.left+r.right)/2,cy:(r.top+r.bottom)/2+6,n:-1,hot:false}})}
+function clampIt(it,bounce){let imp=0;const r=it.a*Math.PI/180,cs=Math.abs(Math.cos(r)),sn=Math.abs(Math.sin(r)),hw=(cs*CW+sn*CH)/2*it.s,hh=(sn*CW+cs*CH)/2*it.s,x0=hw,x1=DW-hw,y0=BAR+hh,y1=DH-hh;
+  if(it.x<x0){it.x=x0;if(bounce&&it.vx<0){imp=Math.max(imp,-it.vx);it.vx*=-.42}}else if(it.x>x1){it.x=x1;if(bounce&&it.vx>0){imp=Math.max(imp,it.vx);it.vx*=-.42}}
+  if(it.y<y0){it.y=y0;if(bounce&&it.vy<0){imp=Math.max(imp,-it.vy);it.vy*=-.42}}else if(it.y>y1){it.y=y1;if(bounce&&it.vy>0){imp=Math.max(imp,it.vy);it.vy*=-.42}}
+  return imp}
+const inZone=(it,z)=>it.x>=z.x0&&it.x<=z.x1&&it.y>=z.y0&&it.y<=z.y1;
+
+/* ----- rendering ----- */
+function render(it){const e=it.el;if(!e)return;const L=it.lift,sc=it.s*(1+L*.05);
+  e.style.transform=`translate3d(${(it.x-CW/2).toFixed(1)}px,${(it.y-CH/2).toFixed(1)}px,0) rotate(${(it.a+it.sw).toFixed(2)}deg) scale(${sc.toFixed(3)}) perspective(800px) rotateX(${it.rx.toFixed(2)}deg) rotateY(${it.ry.toFixed(2)}deg)`;
+  e.style.opacity=it.op;e.style.zIndex=it.z;
+  it.sh.style.transform=`translate(${(2+L*13).toFixed(1)}px,${(4+L*20).toFixed(1)}px) scale(${(1+L*.04).toFixed(3)})`;it.sh.style.opacity=(.62-L*.2).toFixed(2)}
+
+/* ----- physics loop (requestAnimationFrame; sleeps when everything is at rest) ----- */
+function kick(){if(deskRun||!deskOpen)return;deskRun=true;deskLast=performance.now();requestAnimationFrame(frame)}
+function frame(now){
+  const dt=Math.min(.033,Math.max(.001,(now-deskLast)/1000));deskLast=now;
+  const r=step(dt);
+  if(deskOpen&&r.moving)requestAnimationFrame(frame);else{deskRun=false;slideSnd(0);if(deskOpen)saveDesk()}}
+function step(dt){
+  let moving=false,maxV=0;const items=DS.items,gone=[],byZone={later:[],archive:[]};
+  items.forEach(it=>{if(it.zone&&byZone[it.zone])byZone[it.zone].push(it)});
+  for(const k in byZone)byZone[k].sort((a,b)=>a.zoneT-b.zoneT);
+  const hot={later:false,archive:false};
+  for(const it of items){
+    const tl=it.held?1:0,ts=it.zone&&!it.held?ZS:1;
+    it.lift+=(tl-it.lift)*Math.min(1,dt*14);it.s+=(ts-it.s)*Math.min(1,dt*12);
+    if(Math.abs(it.lift-tl)>.01||Math.abs(it.s-ts)>.004)moving=true;
+    if(it.leaving){it.lt+=dt;const k=Math.min(1,it.lt/.3);it.x+=(DW/2-it.x)*Math.min(1,dt*7);it.y+=(BAR-it.y)*Math.min(1,dt*7);it.op=1-k;it.s=1-.55*k;moving=true;if(k>=1)gone.push(it);render(it);continue}
+    if(it.held){
+      const px=it.x,py=it.y,f=Math.min(1,dt*26);it.x+=(it.tx-it.x)*f;it.y+=(it.ty-it.y)*f;clampIt(it,false);
+      it.hvx+=((it.x-px)/dt-it.hvx)*.3;it.hvy+=((it.y-py)/dt-it.hvy)*.3;it.vx=it.hvx;it.vy=it.hvy;moving=true;
+      for(const n in ZR)if(inZone(it,ZR[n]))hot[n]=true}
+    else if(it.pinned){it.vx=it.vy=it.va=0}
+    else if(it.zone&&ZR[it.zone]){
+      const z=ZR[it.zone],k=byZone[it.zone].indexOf(it),tx=z.cx+((k%5)-2)*9,ty=z.cy+((k%3)-1)*5,ta=((k%4)-1.5)*3.2;
+      it.vx+=((tx-it.x)*70-it.vx*13)*dt;it.vy+=((ty-it.y)*70-it.vy*13)*dt;it.va+=((ta-it.a)*70-it.va*13)*dt;
+      it.x+=it.vx*dt;it.y+=it.vy*dt;it.a+=it.va*dt;
+      if(Math.hypot(tx-it.x,ty-it.y)<.4&&Math.hypot(it.vx,it.vy)<3&&Math.abs(ta-it.a)<.15&&Math.abs(it.va)<2){it.x=tx;it.y=ty;it.a=ta;it.vx=it.vy=it.va=0}else moving=true}
+    else{
+      const sp=Math.hypot(it.vx,it.vy);
+      if(sp>0||Math.abs(it.va)>0){
+        const ns=Math.max(0,sp*Math.exp(-FR*dt)-55*dt),k=sp?ns/sp:0;it.vx*=k;it.vy*=k;it.va*=Math.exp(-5*dt);
+        if(ns<6&&Math.abs(it.va)<1.2){it.vx=it.vy=it.va=0}else moving=true;
+        it.x+=it.vx*dt;it.y+=it.vy*dt;it.a+=it.va*dt;
+        const imp=clampIt(it,true);if(imp>160){thud(clamp(imp/1800,.15,1));if(imp>900)hap(10)}
+        for(const n in ZR)if(inZone(it,ZR[n])){it.zone=n;it.zoneT=performance.now();it.vx*=.4;it.vy*=.4;thud(.6);rustle(.6);hap(14);moving=true;saveDeskSoon();break}}}
+    const ttx=it.held?clamp(-it.hvy/55,-13,13):0,tty=it.held?clamp(it.hvx/55,-13,13):0,tsw=it.held?clamp(it.hvx/110,-8,8):0,e=Math.min(1,dt*10);
+    it.rx+=(ttx-it.rx)*e;it.ry+=(tty-it.ry)*e;it.sw+=(tsw-it.sw)*e;
+    if(Math.abs(it.rx)>.05||Math.abs(it.ry)>.05||Math.abs(it.sw)>.05)moving=true;
+    maxV=Math.max(maxV,Math.hypot(it.vx,it.vy));render(it)}
+  /* soft collisions: free cards ease apart when nearly on top of each other, so stacks fan out slightly */
+  const free=items.filter(i=>!i.held&&!i.leaving&&!i.zone),MIN=36;
+  for(let i=0;i<free.length;i++)for(let j=i+1;j<free.length;j++){
+    const p=free[i],q=free[j];if(p.pinned&&q.pinned)continue;
+    let dx=q.x-p.x,dy=q.y-p.y,d=Math.hypot(dx,dy);if(d>=MIN)continue;
+    if(d<.01){const g=Math.random()*6.28;dx=Math.cos(g);dy=Math.sin(g);d=1}
+    const push=(MIN-d)*Math.min(1,dt*7),ux=dx/d,uy=dy/d;
+    if(p.pinned){q.x+=ux*push;q.y+=uy*push;clampIt(q,false)}else if(q.pinned){p.x-=ux*push;p.y-=uy*push;clampIt(p,false)}else{p.x-=ux*push/2;p.y-=uy*push/2;q.x+=ux*push/2;q.y+=uy*push/2;clampIt(p,false);clampIt(q,false)}
+    if(push>.05){moving=true;render(p);render(q)}}
+  gone.forEach(finishReturn);
+  for(const n in ZR){const z=ZR[n],c=byZone[n].length;if(z.n!==c){z.n=c;z.el.querySelector('b').textContent=c}if(z.hot!==hot[n]){z.hot=hot[n];z.el.classList.toggle('hot',hot[n])}}
+  slideSnd(maxV);return{moving}}
+
+/* ----- dragging ----- */
+function dragStart(it,x,y,pid){
+  if(zTop>1500){[...DS.items].sort((a,b)=>a.z-b.z).forEach((i,k)=>i.z=10+k);zTop=10+DS.items.length}
+  it.held=true;it.pid=pid;it.gx=x-it.x;it.gy=y-it.y;it.tx=x-it.gx;it.ty=y-it.gy;it.zone=null;it.vx=it.vy=it.va=0;it.hvx=it.hvy=0;it.z=++zTop;it.samp=[{t:performance.now(),x,y}];
+  rustle(.8);hap(8);kick()}
+function dragMove(it,x,y){it.tx=x-it.gx;it.ty=y-it.gy;const n=performance.now();it.samp.push({t:n,x,y});while(it.samp.length>2&&n-it.samp[0].t>140)it.samp.shift()}
+function dragEnd(it){
+  if(!it.held)return;it.held=false;it.pid=null;const n=performance.now(),S=it.samp;let vx=0,vy=0;
+  if(S.length>1&&n-S[S.length-1].t<90){const f=S[0],l=S[S.length-1],dt=Math.max(.016,(l.t-f.t)/1000);vx=(l.x-f.x)/dt;vy=(l.y-f.y)/dt}
+  const sp=Math.hypot(vx,vy);if(sp>VMAX){vx*=VMAX/sp;vy*=VMAX/sp}
+  it.vx=vx;it.vy=vy;it.va=(Math.random()-.5)*Math.min(Math.hypot(vx,vy),2000)*.025;it.hvx=it.hvy=0;
+  thud(.3+Math.min(.4,sp/4000));kick();saveDeskSoon()}
+function togglePin(it){it.pinned=!it.pinned;it.el.classList.toggle('pinned',it.pinned);if(it.pinned){it.vx=it.vy=it.va=0}setLabels(it);pinClick();hap(14);kick();saveDeskSoon()}
+function returnCard(it){if(!it||it.leaving)return;if(it.held)dragEnd(it);it.leaving=true;it.lt=0;it.vx=it.vy=0;rustle(.9);kick()}
+function finishReturn(it){it.el&&it.el.remove();DS.items=DS.items.filter(i=>i!==it);saveDesk();paint();deskRefresh()}
+
+const dsurf=$('dsurf');
+dsurf.addEventListener('pointerdown',e=>{
+  const el=e.target.closest('.dc');if(!el||e.target.closest('button')||e.button)return;
+  const it=itemOf(el);if(!it||it.leaving||it.held)return;
+  it.downX=e.clientX;it.downY=e.clientY;it.downT=performance.now();it.tapId=e.pointerId;
+  try{el.setPointerCapture(e.pointerId)}catch(_){}
+  if(it.pinned)return;dragStart(it,e.clientX,e.clientY,e.pointerId)});
+dsurf.addEventListener('pointermove',e=>{
+  const el=e.target.closest('.dc');const it=DS.items.find(i=>i.pid===e.pointerId&&i.held);
+  if(it){dragMove(it,e.clientX,e.clientY);return}
+  const pn=el&&itemOf(el);if(pn&&pn.pinned&&pn.tapId===e.pointerId&&Math.hypot(e.clientX-pn.downX,e.clientY-pn.downY)>10&&!pinTip){pinTip=true;toast(t('deskPinned'))}});
+const upEnd=e=>{
+  const it=DS.items.find(i=>i.pid===e.pointerId&&i.held);
+  if(it){dragEnd(it)}
+  const el=e.target.closest&&e.target.closest('.dc'),tp=el&&itemOf(el);
+  if(tp&&tp.tapId===e.pointerId&&e.type==='pointerup'&&Math.hypot(e.clientX-tp.downX,e.clientY-tp.downY)<8&&performance.now()-tp.downT<400){
+    const n=performance.now();if(tp.lastTap&&n-tp.lastTap<340){tp.lastTap=0;togglePin(tp)}else tp.lastTap=n}
+  if(tp)tp.tapId=null};
+dsurf.addEventListener('pointerup',upEnd);dsurf.addEventListener('pointercancel',upEnd);
+dsurf.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const it=itemOf(b.closest('.dc'));if(!it)return;if(b.classList.contains('dpin'))togglePin(it);else if(b.classList.contains('dret'))returnCard(it)});
+
+/* ----- open / close / pull ----- */
+function deskRefresh(){const n=DS.items.length;$('deskb').textContent=t('desk')+(n?` (${n})`:'');$('dHint').textContent=t(n?'deskHint':'deskEmpty');$('dPull').disabled=!V.length;DS.items.forEach(setLabels)}
+function openDesk(x,y){
+  if(deskOpen)return;const sr=$('stack').getBoundingClientRect();if(x==null){x=sr.left+sr.width/2;y=sr.top+sr.height/2}
+  deskOpen=true;const d=$('desk');d.hidden=false;document.body.style.overflow='hidden';measure();
+  DS.items.forEach(it=>{if(!it.el)mkEl(it);it.vx=it.vy=it.va=0;it.held=false;if(!it.zone)clampIt(it,false);render(it)});
+  if(!REDUCE){const R=Math.hypot(DW,DH)+40;d.animate([{clipPath:`circle(0px at ${x}px ${y}px)`},{clipPath:`circle(${R}px at ${x}px ${y}px)`}],{duration:560,easing:'cubic-bezier(.2,.75,.2,1)'})}
+  deskSoundStart();rustle(1);deskRefresh();kick()}
+function closeDesk(){
+  if(!deskOpen)return;DS.items.forEach(it=>{if(it.held)dragEnd(it)});handoff=null;
+  DS.items.forEach(it=>{if(it.leaving){finishReturn(it)}});
+  deskOpen=false;DS.items.forEach(it=>{it.vx=it.vy=it.va=0});saveDesk();slideSnd(0);
+  const d=$('desk'),sr=$('stack').getBoundingClientRect(),cx=sr.left+sr.width/2,cy=sr.top+sr.height/2,R=Math.hypot(DW,DH)+40;
+  paint();deskRefresh();
+  const fin=()=>{if(deskOpen)return;d.hidden=true;document.body.style.overflow='';deskSoundStop()};
+  if(REDUCE)fin();else{const a=d.animate([{clipPath:`circle(${R}px at ${cx}px ${cy}px)`},{clipPath:`circle(0px at ${cx}px ${cy}px)`}],{duration:400,easing:'cubic-bezier(.5,0,.8,.4)'});a.finished.then(fin,fin)}}
+function pullCard(c,o={}){
+  if(!c)return null;
+  const sr=$('stack').getBoundingClientRect(),it=newItem(c.id,{x:sr.left+sr.width/2,y:sr.top+sr.height/2,a:(Math.random()-.5)*8,z:++zTop,s:.92,lift:1});
+  DS.items.push(it);if(deskOpen)mkEl(it);
+  if(o.held){dragStart(it,o.x,o.y,o.pid);handoff={it,pid:o.pid}}
+  else{const tx=DW*(.28+.44*Math.random()),ty=BAR+(DH-BAR-CH-130)*(.12+.5*Math.random())+CH/2;
+    it.vx=clamp((tx-it.x)*FR,-VMAX,VMAX);it.vy=clamp((ty-it.y)*FR,-VMAX,VMAX);it.va=(Math.random()-.5)*50;rustle(1);hap(12)}
+  paint();deskRefresh();saveDeskSoon();kick();return it}
+const pullCurrent=()=>V[idx]?pullCard(V[idx]):toast(t('deskNoCards'));
+$('deskb').onclick=()=>{openDesk();if(!DS.items.length)pullCurrent()};
+$('dBack').onclick=closeDesk;
+$('dPull').onclick=pullCurrent;
+$('dClear').onclick=()=>{DS.items.slice().forEach((it,k)=>setTimeout(()=>returnCard(it),k*70))};
+document.addEventListener('keydown',e=>{if(!deskOpen)return;if(e.key==='Escape'&&!document.querySelector('dialog[open]')){e.preventDefault();closeDesk()}else if(/^Arrow/.test(e.key))e.stopImmediatePropagation()},true);
+addEventListener('resize',()=>{if(!deskOpen)return;measure();DS.items.forEach(it=>{if(!it.zone)clampIt(it,false)});kick()});
+addEventListener('pagehide',()=>{if(DS.items.length||st.get(DK,null))saveDesk()});
+
+/* ----- long-press on a rolodex card pulls it out; keep dragging to place it ----- */
+(()=>{const s=$('stack'),stop=()=>{clearTimeout(lpT);lpT=null};
+  s.addEventListener('pointerdown',e=>{if(e.button||deskOpen||e.target.closest('.pull,.cqr')||!V.length)return;lpX=e.clientX;lpY=e.clientY;stop();
+    const pid=e.pointerId;lpT=setTimeout(()=>{lpT=null;if(!V[idx])return;window.__lp=true;hap(18);openDesk(lpX,lpY);pullCard(V[idx],{held:true,x:lpX,y:lpY,pid})},520)});
+  s.addEventListener('pointermove',e=>{if(handoff&&e.pointerId===handoff.pid){dragMove(handoff.it,e.clientX,e.clientY);return}if(lpT&&Math.hypot(e.clientX-lpX,e.clientY-lpY)>10)stop()});
+  const up=e=>{stop();if(handoff&&e.pointerId===handoff.pid){dragEnd(handoff.it);handoff=null}};
+  s.addEventListener('pointerup',up);s.addEventListener('pointercancel',up)})();
+
+loadDesk();
 
 /* ---------- Business-card scanner (camera + OCR + ES/EN detection) ---------- */
 const TESS='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';
