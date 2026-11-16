@@ -888,7 +888,7 @@ build();applyLang();
 /* ---------- Plastic cover: any click, tap or key removes it ---------- */
 (()=>{const cv=$('cover');if(!cv)return;let gone=false;
   const peel=e=>{if(gone)return;gone=true;
-    if(e&&e.type!=='keydown'){e.stopPropagation();e.preventDefault&&e.preventDefault();
+    if(e&&e.type!=='keydown'&&!(e.target&&e.target.closest&&e.target.closest('button,a,input,select,textarea,summary,label'))){e.stopPropagation();e.preventDefault&&e.preventDefault();
       document.addEventListener('click',x=>{x.stopPropagation();x.preventDefault()},{capture:true,once:true})}
     ['pointerdown','keydown'].forEach(ev=>document.removeEventListener(ev,peel,true));
     bamboo(1.2);cv.parentNode.classList.remove('covered');cv.classList.add('off');setTimeout(()=>cv.remove(),600)};
