@@ -113,27 +113,6 @@ label.f{display:block;font-size:12px;letter-spacing:.04em;margin:9px 0 3px}
 .dnail{position:absolute;left:50%;top:-6px;width:17px;height:17px;margin-left:-8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffb8aa,#d8321f 55%,#8f1b0e);box-shadow:2px 4px 4px rgba(0,0,0,.55);display:none;pointer-events:none}
 .dc.pinned .dnail{display:block}
 @media (max-width:400px){.dbar .b{padding:8px 9px;font-size:12px}}
-
-/* ---------- AR Desk ---------- */
-#dVid{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#2a2012}
-#desk.ar #dVid{display:block}
-#dwood{transition:opacity .3s}
-#desk.ar #dwood{opacity:0}
-#desk.ar .zone{width:min(36vw,230px)}
-.dbar{gap:6px}
-.dbar .b svg{width:16px;height:16px;fill:currentColor;vertical-align:-3px;margin-right:4px;pointer-events:none}
-#dShot{position:absolute;left:50%;bottom:max(14px,calc(env(safe-area-inset-bottom) + 2px));transform:translateX(-50%);z-index:2000;width:68px;height:68px;border-radius:50%;border:5px solid var(--gold);background:#fff7dc;box-shadow:0 4px 0 #8a6a12,0 8px 18px rgba(0,0,0,.35);cursor:pointer;padding:0;touch-action:manipulation}
-#dShot[hidden]{display:none}
-#dShot::after{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--gold)}
-#dShot:active{transform:translateX(-50%) translateY(3px);box-shadow:0 1px 0 #8a6a12}
-#dShot:focus-visible{outline:3px solid #fff;outline-offset:3px}
-.dflash{position:absolute;inset:0;z-index:3000;background:#fff;pointer-events:none;animation:dfl .32s ease-out forwards}
-@keyframes dfl{from{opacity:.85}to{opacity:0}}
-#dr{text-align:center}
-#dr img{display:block;width:100%;max-height:62vh;object-fit:contain;border-radius:10px;margin:8px 0;background:#fbf0c4}
-#dr .row{flex-wrap:wrap}
-@media (max-width:400px){.dbar{gap:4px}.dbar .b svg{margin-right:2px}}
-@media (prefers-reduced-motion:reduce){.dflash{animation:none;opacity:0}}
 </style>
 </head>
 <body>
@@ -164,7 +143,7 @@ label.f{display:block;font-size:12px;letter-spacing:.04em;margin:9px 0 3px}
     <button class="b" id="edit" data-i18n="edit">Edit</button>
     <button class="b" id="addc" data-i18n="addc">Add to contacts</button>
     <button class="b p" id="qrb" data-i18n="qr">QR code</button>
-    <button class="b p" id="deskb">Desk</button><button class="b p" id="arb">AR Desk</button>
+    <button class="b p" id="deskb">Desk</button>
     <button class="b" id="del" data-i18n="del">Delete</button>
     <button class="b" id="delall" data-i18n="delAll">Delete all</button>
     <button class="b" id="pick" data-i18n="pick">Pick from phone</button>
@@ -213,17 +192,13 @@ label.f{display:block;font-size:12px;letter-spacing:.04em;margin:9px 0 3px}
 <dialog id="dh"><h2 data-i18n="helpTitle">Import your contacts</h2><div id="hb"></div><div class="row"><button class="b p" id="hx" data-i18n="close">Close</button></div></dialog>
 <section id="desk" hidden aria-label="Desk">
   <div id="dwood"></div>
-  <video id="dVid" playsinline muted autoplay></video>
   <div id="dsurf">
     <div class="zone l" data-z="later"><span data-i18n="deskLater">Later</span><b>0</b></div>
     <div class="zone r" data-z="archive"><span data-i18n="deskArchive">Archive</span><b>0</b></div>
   </div>
-  <header class="dbar"><button type="button" class="b" id="dBack" data-i18n="deskBack">‹ Back to Rolodex</button><span class="dsp"></span><button type="button" class="b" id="dAR" aria-pressed="false" data-aria="arToggle" title="AR"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 7.2 6H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3.2L15 4H9zm3 4.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></svg>AR</button><button type="button" class="b p" id="dPull" data-i18n="deskPull">Pull a card</button><button type="button" class="b" id="dClear" data-i18n="deskClear">Clear desk</button></header>
+  <header class="dbar"><button type="button" class="b" id="dBack" data-i18n="deskBack">‹ Back to Rolodex</button><span class="dsp"></span><button type="button" class="b p" id="dPull" data-i18n="deskPull">Pull a card</button><button type="button" class="b" id="dClear" data-i18n="deskClear">Clear desk</button></header>
   <p class="dhint" id="dHint"></p>
-  <button type="button" id="dShot" hidden data-aria="arShot"></button>
 </section>
-<dialog id="dr"><h2 data-i18n="arTitle">Your AR desk photo</h2><img id="arImg" alt="" data-alt="arTitle">
-  <div class="row"><button type="button" class="b" id="arRetake" data-i18n="arRetake">Retake</button><button type="button" class="b" id="arSave" data-i18n="arSave">Save photo</button><button type="button" class="b p" id="arShare" data-i18n="arShare">Share</button></div></dialog>
 <div id="toast" role="status"></div>
 
 <script>/* qrcode-generator 1.4.4 (MIT, Kazuhiko Arase) */
@@ -239,8 +214,7 @@ en:{sub:'Flip to a card. Ping them on WhatsApp.',search:'Search name, company or
 es:{sub:'Pasa a una ficha. Escríbeles por WhatsApp.',search:'Buscar nombre, empresa o número',searchAria:'Buscar fichas',prev:'Ficha anterior',call:'Llamar',addc:'Añadir a contactos',addcDone:'Archivo de contacto listo. Ábrelo para añadir a esta persona a los contactos de tu móvil.',bk:'Copia de seguridad',bkTitle:'Copia de seguridad y exportar',bkHint:'Guarda todas tus fichas. Para restaurarlas, suelta el archivo .json en el recuadro de importar.',bkCount:n=>`${n} ficha${n===1?'':'s'} lista${n===1?'':'s'} para guardar`,bkJson:'Copia de seguridad (.json)',bkJsonS:'Todos los campos, ideal para restaurar',bkVcf:'Contactos (.vcf)',bkVcfS:'Se abre en Google, iCloud, Outlook y tu móvil',bkCsv:'Hoja de cálculo (.csv)',bkCsvS:'Se abre en Excel y Google Sheets',saved:'Descarga iniciada',noneToSave:'No hay fichas que guardar',help:'Ayuda',helpTitle:'Importa tus contactos',close:'Cerrar',helpData:[["Exportar desde Gmail (Google Contactos)", ["Abre contacts.google.com en tu ordenador.", "Marca los contactos que quieras, o no marques ninguno para llevarte todos.", "Pulsa Exportar (menú de la izquierda o menú ⋮), elige CSV de Google o vCard y pulsa Exportar."]], ["Exportar desde Outlook en Windows", ["Nuevo Outlook / outlook.com: abre Personas, pulsa Administrar, después Exportar contactos y elige Todos los contactos.", "Outlook clásico: Archivo > Abrir y exportar > Importar/Exportar > Exportar a un archivo > Valores separados por comas > carpeta Contactos > Finalizar.", "El archivo se guarda en tu carpeta Descargas."]], ["Envía el archivo a tu móvil", ["WhatsApp: abre WhatsApp Web o de escritorio, entra en el chat contigo mismo (Enviarte un mensaje), adjunta el archivo como Documento y envíalo. En el móvil, abre ese chat, toca el archivo y elige Guardar o Compartir > Archivos.", "Otras formas: envíatelo por correo, súbelo a Google Drive o iCloud Drive, AirDrop (iPhone), Quick Share (Android) o un cable USB."]], ["Impórtalo en RoloPro", ["En el móvil, abre RoloPro y toca el recuadro de líneas discontinuas (\"Suelta aquí un archivo .vcf, .csv o .json, o toca para elegirlo\").", "Elige el archivo desde Archivos, Descargas o Drive.", "Tus fichas aparecen en segundos. Los contactos que ya tienes se actualizan, sin duplicarse.", "Consejo: configura antes el Prefijo de país por defecto para que los botones de WhatsApp y llamada funcionen con números locales."]]],mail:'Enviar email',noEmail:'Esta ficha no tiene correo electrónico',next:'Ficha siguiente',ping:'WHATSAPP',add:'Añadir ficha',edit:'Editar',del:'Eliminar',delAll:'Eliminar todas',pick:'Elegir del móvil',sndOn:'Sonido activado',sndOff:'Sonido desactivado',rnd:'Random',autoOn:'Auto',autoOff:'Pausar',drop:'Suelta aquí un archivo .vcf, .csv o .json, o toca para elegirlo',cc:'Prefijo de país por defecto',newCard:'Nueva ficha',editCard:'Editar ficha',fName:'Nombre',fCompany:'Empresa',fPhone:'Teléfono',fWa:'Número de WhatsApp (si es distinto)',fCat:'Categoría',fNotes:'Notas',cat_Friend:'Amigo',cat_Family:'Familia',cat_Work:'Trabajo',cat_Client:'Cliente',cat_Other:'Otro',cancel:'Cancelar',save:'Guardar ficha',msgTo:'Mensaje para',hint:'Se adjunta la imagen de RoloPro y se añade "RoloPro easylandx.github.io/rolopro" en la línea siguiente.',openWa:'Abrir WhatsApp',tel:'Tel.',email:'Email',addr:'Dirección',fEmail:'Correo electrónico',fAddr:'Dirección',of:'de',zero:'0 fichas',noCards:'No se encontraron fichas',noCardsHint:'Añade una ficha o borra la búsqueda.',noUnder:l=>`No hay fichas con la ${l}`,addFirst:'Primero añade una ficha',noPhone:'Esta ficha no tiene número de teléfono',filed:'Ficha guardada',noDel:'No hay ninguna ficha que eliminar',delCardQ:n=>`¿Eliminar la ficha de ${n}?`,noneToDel:'No hay fichas que eliminar',delAllQ:n=>`¿Eliminar las ${n} fichas? Esta acción no se puede deshacer.`,allDeleted:'Todas las fichas eliminadas',filedN:n=>`${n} ficha${n>1?'s':''} nueva${n>1?'s':''} guardada${n>1?'s':''}`,nothingNew:'No hay nada nuevo que guardar',noVcf:'No se encontraron contactos en ese archivo',importDone:(n,u)=>`${n} nuevas, ${u} actualizadas`,fExtra:'Otros campos (uno por línea, Etiqueta: valor)',noPicker:'El selector de contactos solo funciona en Chrome para Android. Importa un archivo .vcf.',hi:n=>`¡Hola ${n}! `,copied:'Imagen copiada. Pulsa Ctrl+V en el chat de WhatsApp para añadirla.',copiedM:'Imagen copiada. En el chat, toca el cuadro de mensaje y elige Pegar para añadirla.',copyFail:'No se pudo copiar la imagen. Tu mensaje está listo en WhatsApp.',noCopy:'Tu navegador no puede copiar la imagen. Tu mensaje está listo en WhatsApp.',presets:['¡Hola! ¿Tienes un minuto?','¡Muchas gracias!','¿Podemos hablar más tarde hoy?','¡Feliz cumpleaños!'],jump:l=>`Ir a la ${l}`,alt:'Fichero de escritorio con teclas laterales de la A a la Z'}
 };
 Object.assign(I18N.en,{scan:'Scan card',scanTitle:'Scan a business card',scanHint:'Fill the frame with the card. A QR contact code is read automatically.',scanQrLink:'QR link found. Now capture the printed card.',scanQrDone:l=>`QR contact read. Language: ${l}. Check the details and save.`,scanCapture:'Capture',scanPhoto:'Use a photo',scanReading:'Reading the card…',scanLoad:'Loading the reader (first time only)…',scanNoCam:'Camera not available. Choose a photo instead.',scanFail:'Could not read any text. Try again with more light.',scanDone:l=>`Card read. Language: ${l}. Check the details and save.`,cardLang:'Card language',langNone:'Not set',scanErr:'The reader could not load. Check your connection and try again.',fTitle:'Job title'});
-Object.assign(I18N.es,{scan:'Escanear tarjeta',scanTitle:'Escanear una tarjeta de visita',scanHint:'Encuadra la tarjeta. Si tiene un código QR de contacto, se lee solo.',scanQrLink:'Enlace QR encontrado. Ahora captura la tarjeta impresa.',scanQrDone:l=>`Contacto QR leído. Idioma: ${l}. Revisa los datos y guarda.`,scanCapture:'Capturar',scanPhoto:'Usar una foto',scanReading:'Leyendo la tarjeta…',scanLoad:'Cargando el lector (solo la primera vez)…',scanNoCam:'No se pudo usar la cámara. Elige una foto.',scanFail:'No se pudo leer texto. Prueba de nuevo con más luz.',scanDone:l=>`Tarjeta leída. Idioma: ${l}. Revisa los datos y guarda.`,cardLang:'Idioma de la tarjeta',langNone:'Sin definir',scanErr:'No se pudo cargar el lector. Revisa tu conexión e inténtalo de nuevo.',fTitle:'Cargo'});Object.assign(I18N.en,{qr:'QR code',qrTitle:'Share this card',qrHint:'Scan with any phone camera to save this contact.',qrWa:'Send as vCard on WhatsApp',qrWaS:'Opens the share sheet and sends the contact file',qrSave:'Save contact file (.vcf)',qrSaveS:'Opens in your phone, Google, iCloud and Outlook contacts',qrWaFallback:'Contact file saved. In WhatsApp, attach it as a Document. The details are also in the message.',qrFail:'This card has too much data for a QR code. Use the .vcf file instead.'});Object.assign(I18N.es,{qr:'Código QR',qrTitle:'Comparte esta ficha',qrHint:'Escanéalo con la cámara de cualquier móvil para guardar este contacto.',qrWa:'Enviar como vCard por WhatsApp',qrWaS:'Abre el menú de compartir y envía el archivo de contacto',qrSave:'Guardar archivo de contacto (.vcf)',qrSaveS:'Se abre en los contactos de tu móvil, Google, iCloud y Outlook',qrWaFallback:'Archivo de contacto guardado. En WhatsApp, adjúntalo como Documento. Los datos también van en el mensaje.',qrFail:'Esta ficha tiene demasiados datos para un código QR. Usa el archivo .vcf.'});Object.assign(I18N.en,{desk:'Desk',onDesk:n=>`${n} on desk`,deskBack:'‹ Back to Rolodex',deskPull:'Pull a card',deskClear:'Clear desk',deskLater:'Later',deskArchive:'Archive',deskPin:'Pin card',deskUnpin:'Unpin card',deskReturn:'Remove from desk',deskHint:'Drag and flick cards. Double-tap to pin. Throw them into a tray.',deskEmpty:'Tap Pull a card, or long-press a card in the rolodex.',deskNoCards:'No cards left in the rolodex',deskPinned:'Pinned. Double-tap to unpin.'});Object.assign(I18N.es,{desk:'Escritorio',onDesk:n=>`${n} en el escritorio`,deskBack:'‹ Volver al Rolodex',deskPull:'Sacar una ficha',deskClear:'Vaciar escritorio',deskLater:'Más tarde',deskArchive:'Archivo',deskPin:'Fijar ficha',deskUnpin:'Soltar ficha',deskReturn:'Quitar del escritorio',deskHint:'Arrastra y lanza las fichas. Toca dos veces para fijar. Lánzalas a una bandeja.',deskEmpty:'Pulsa Sacar una ficha, o mantén pulsada una ficha del rolodex.',deskNoCards:'No quedan fichas en el rolodex',deskPinned:'Fijada. Toca dos veces para soltarla.'});Object.assign(I18N.en,{arToggle:'AR mode: show the camera behind the desk',arHint:'AR on: your cards float over the camera. Arrange them, then tap the shutter.',arNoCam:'Camera not available. Allow camera access (needs https).',arShot:'Take photo',arTitle:'Your AR desk photo',arSave:'Save photo',arShare:'Share',arRetake:'Retake',arSaved:'Photo saved',arFail:'Could not take the photo',arShareFb:'Sharing is not available here. The photo was saved instead.'});Object.assign(I18N.es,{arToggle:'Modo AR: ver la cámara detrás del escritorio',arHint:'AR activo: tus fichas flotan sobre la cámara. Colócalas y pulsa el obturador.',arNoCam:'Cámara no disponible. Permite el acceso a la cámara (requiere https).',arShot:'Hacer foto',arTitle:'Foto de tu escritorio AR',arSave:'Guardar foto',arShare:'Compartir',arRetake:'Repetir',arSaved:'Foto guardada',arFail:'No se pudo hacer la foto',arShareFb:'Compartir no está disponible aquí. Se guardó la foto.'});
-let lang=st.get('rc.lang',/^es/i.test(navigator.language||'')?'es':'en');if(!I18N[lang])lang='en';
+Object.assign(I18N.es,{scan:'Escanear tarjeta',scanTitle:'Escanear una tarjeta de visita',scanHint:'Encuadra la tarjeta. Si tiene un código QR de contacto, se lee solo.',scanQrLink:'Enlace QR encontrado. Ahora captura la tarjeta impresa.',scanQrDone:l=>`Contacto QR leído. Idioma: ${l}. Revisa los datos y guarda.`,scanCapture:'Capturar',scanPhoto:'Usar una foto',scanReading:'Leyendo la tarjeta…',scanLoad:'Cargando el lector (solo la primera vez)…',scanNoCam:'No se pudo usar la cámara. Elige una foto.',scanFail:'No se pudo leer texto. Prueba de nuevo con más luz.',scanDone:l=>`Tarjeta leída. Idioma: ${l}. Revisa los datos y guarda.`,cardLang:'Idioma de la tarjeta',langNone:'Sin definir',scanErr:'No se pudo cargar el lector. Revisa tu conexión e inténtalo de nuevo.',fTitle:'Cargo'});Object.assign(I18N.en,{qr:'QR code',qrTitle:'Share this card',qrHint:'Scan with any phone camera to save this contact.',qrWa:'Send as vCard on WhatsApp',qrWaS:'Opens the share sheet and sends the contact file',qrSave:'Save contact file (.vcf)',qrSaveS:'Opens in your phone, Google, iCloud and Outlook contacts',qrWaFallback:'Contact file saved. In WhatsApp, attach it as a Document. The details are also in the message.',qrFail:'This card has too much data for a QR code. Use the .vcf file instead.'});Object.assign(I18N.es,{qr:'Código QR',qrTitle:'Comparte esta ficha',qrHint:'Escanéalo con la cámara de cualquier móvil para guardar este contacto.',qrWa:'Enviar como vCard por WhatsApp',qrWaS:'Abre el menú de compartir y envía el archivo de contacto',qrSave:'Guardar archivo de contacto (.vcf)',qrSaveS:'Se abre en los contactos de tu móvil, Google, iCloud y Outlook',qrWaFallback:'Archivo de contacto guardado. En WhatsApp, adjúntalo como Documento. Los datos también van en el mensaje.',qrFail:'Esta ficha tiene demasiados datos para un código QR. Usa el archivo .vcf.'});Object.assign(I18N.en,{desk:'Desk',onDesk:n=>`${n} on desk`,deskBack:'‹ Back to Rolodex',deskPull:'Pull a card',deskClear:'Clear desk',deskLater:'Later',deskArchive:'Archive',deskPin:'Pin card',deskUnpin:'Unpin card',deskReturn:'Remove from desk',deskHint:'Drag and flick cards. Double-tap to pin. Throw them into a tray.',deskEmpty:'Tap Pull a card, or long-press a card in the rolodex.',deskNoCards:'No cards left in the rolodex',deskPinned:'Pinned. Double-tap to unpin.'});Object.assign(I18N.es,{desk:'Escritorio',onDesk:n=>`${n} en el escritorio`,deskBack:'‹ Volver al Rolodex',deskPull:'Sacar una ficha',deskClear:'Vaciar escritorio',deskLater:'Más tarde',deskArchive:'Archivo',deskPin:'Fijar ficha',deskUnpin:'Soltar ficha',deskReturn:'Quitar del escritorio',deskHint:'Arrastra y lanza las fichas. Toca dos veces para fijar. Lánzalas a una bandeja.',deskEmpty:'Pulsa Sacar una ficha, o mantén pulsada una ficha del rolodex.',deskNoCards:'No quedan fichas en el rolodex',deskPinned:'Fijada. Toca dos veces para soltarla.'});let lang=st.get('rc.lang',/^es/i.test(navigator.language||'')?'es':'en');if(!I18N[lang])lang='en';
 const t=(k,...a)=>{const v=I18N[lang][k]??I18N.en[k];return typeof v==='function'?v(...a):v};
 const catName=c=>I18N[lang]['cat_'+c]||c;
 function buildChips(){const box=$('chips');box.innerHTML='';t('presets').forEach(p=>{const b=document.createElement('button');b.type='button';b.className='b';b.textContent=p;b.onclick=()=>{$('pm').value=p};box.append(b)})}
@@ -695,7 +669,7 @@ dsurf.addEventListener('pointerup',upEnd);dsurf.addEventListener('pointercancel'
 dsurf.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const it=itemOf(b.closest('.dc'));if(!it)return;if(b.classList.contains('dpin'))togglePin(it);else if(b.classList.contains('dret'))returnCard(it)});
 
 /* ----- open / close / pull ----- */
-function deskRefresh(){const n=DS.items.length;$('deskb').textContent=t('desk')+(n?` (${n})`:'');$('dHint').textContent=t(arOn?'arHint':(n?'deskHint':'deskEmpty'));$('dPull').disabled=!V.length;DS.items.forEach(setLabels)}
+function deskRefresh(){const n=DS.items.length;$('deskb').textContent=t('desk')+(n?` (${n})`:'');$('dHint').textContent=t(n?'deskHint':'deskEmpty');$('dPull').disabled=!V.length;DS.items.forEach(setLabels)}
 function openDesk(x,y){
   if(deskOpen)return;const sr=$('stack').getBoundingClientRect();if(x==null){x=sr.left+sr.width/2;y=sr.top+sr.height/2}
   deskOpen=true;const d=$('desk');d.hidden=false;document.body.style.overflow='hidden';measure();
@@ -703,7 +677,7 @@ function openDesk(x,y){
   if(!REDUCE){const R=Math.hypot(DW,DH)+40;d.animate([{clipPath:`circle(0px at ${x}px ${y}px)`},{clipPath:`circle(${R}px at ${x}px ${y}px)`}],{duration:560,easing:'cubic-bezier(.2,.75,.2,1)'})}
   deskSoundStart();rustle(1);deskRefresh();kick()}
 function closeDesk(){
-  if(!deskOpen)return;arStop();DS.items.forEach(it=>{if(it.held)dragEnd(it)});handoff=null;
+  if(!deskOpen)return;DS.items.forEach(it=>{if(it.held)dragEnd(it)});handoff=null;
   DS.items.forEach(it=>{if(it.leaving){finishReturn(it)}});
   deskOpen=false;DS.items.forEach(it=>{it.vx=it.vy=it.va=0});saveDesk();slideSnd(0);
   const d=$('desk'),sr=$('stack').getBoundingClientRect(),cx=sr.left+sr.width/2,cy=sr.top+sr.height/2,R=Math.hypot(DW,DH)+40;
@@ -734,77 +708,6 @@ addEventListener('pagehide',()=>{if(DS.items.length||st.get(DK,null))saveDesk()}
   s.addEventListener('pointermove',e=>{if(handoff&&e.pointerId===handoff.pid){dragMove(handoff.it,e.clientX,e.clientY);return}if(lpT&&Math.hypot(e.clientX-lpX,e.clientY-lpY)>10)stop()});
   const up=e=>{stop();if(handoff&&e.pointerId===handoff.pid){dragEnd(handoff.it);handoff=null}};
   s.addEventListener('pointerup',up);s.addEventListener('pointercancel',up)})();
-
-/* ---------- AR Desk: live camera behind the desk + photo capture ---------- */
-let arOn=false,arStream=null,arBusy=false,arUrl=null,arBlob=null;
-const arVid=$('dVid');
-function arSync(){$('desk').classList.toggle('ar',arOn);$('dAR').setAttribute('aria-pressed',arOn?'true':'false');$('dShot').hidden=!arOn;deskRefresh();if(deskOpen){measure();kick()}}
-async function arStart(){
-  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.isSecureContext){toast(t('arNoCam'));return false}
-  try{arStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1920},height:{ideal:1080}},audio:false});
-    arVid.srcObject=arStream;await arVid.play().catch(()=>{});return true}
-  catch(e){arStream=null;toast(t('arNoCam'));return false}}
-function arStop(){
-  if(arStream){arStream.getTracks().forEach(x=>x.stop());arStream=null}
-  arVid.srcObject=null;if(arOn){arOn=false;arSync()}}
-$('arb').onclick=()=>{openDesk();if(!DS.items.length)pullCurrent();if(!arOn)$('dAR').click()};
-$('dAR').onclick=async()=>{
-  if(arOn){arStop();return}
-  if(await arStart()){arOn=true;arSync();bamboo(1)}};
-document.addEventListener('visibilitychange',async()=>{
-  if(!arOn)return;
-  if(document.hidden){if(arStream){arStream.getTracks().forEach(x=>x.stop());arStream=null}}
-  else if(!arStream&&!(await arStart()))arStop()});
-
-const arRR=(x,X,Y,W,H,r)=>{x.beginPath();x.moveTo(X+r,Y);x.arcTo(X+W,Y,X+W,Y+H,r);x.arcTo(X+W,Y+H,X,Y+H,r);x.arcTo(X,Y+H,X,Y,r);x.arcTo(X,Y,X+W,Y,r);x.closePath()};
-function arFit(x,s,W){s=String(s||'');if(x.measureText(s).width<=W)return s;while(s.length>1&&x.measureText(s+'…').width>W)s=s.slice(0,-1);return s+'…'}
-function arCard(x,it,c){
-  const sc=it.s*(1+it.lift*.05);
-  x.save();x.translate(it.x,it.y);x.rotate((it.a+it.sw)*Math.PI/180);x.scale(sc,sc);x.translate(-CW/2,-CH/2);
-  x.save();x.shadowColor='rgba(20,8,0,.55)';x.shadowBlur=12;x.shadowOffsetX=3;x.shadowOffsetY=5;x.fillStyle='#fbf0c4';arRR(x,0,0,CW,CH,6);x.fill();x.restore();
-  x.save();arRR(x,0,0,CW,CH,6);x.clip();
-  x.fillStyle='#fbf0c4';x.fillRect(0,0,CW,CH);
-  x.fillStyle='#e6b72f';for(let y=29;y<CH;y+=22)x.fillRect(0,y,CW,1);
-  x.fillStyle='#ecd98c';x.fillRect(0,CH-2,CW,2);
-  x.textBaseline='middle';x.textAlign='left';
-  x.font='17px "Special Elite",serif';x.fillStyle='#1d5fd1';x.fillText(arFit(x,c.name,CW-20-56),10,19);
-  x.font='13px "Courier Prime",monospace';x.fillStyle='#2b2418';
-  const sub=[c.company!==c.name?c.company:'',c.title].filter(Boolean).join(' · ');
-  [sub,c.phone||c.wa,c.email].forEach((v,i)=>{if(v)x.fillText(arFit(x,v,CW-20),10,41+22*i)});
-  x.restore();
-  if(it.pinned){const g=x.createRadialGradient(CW/2-2,0,1,CW/2,2,9);g.addColorStop(0,'#ffb8aa');g.addColorStop(.55,'#d8321f');g.addColorStop(1,'#8f1b0e');
-    x.save();x.shadowColor='rgba(0,0,0,.55)';x.shadowBlur=4;x.shadowOffsetX=2;x.shadowOffsetY=4;x.fillStyle=g;x.beginPath();x.arc(CW/2,2,8.5,0,Math.PI*2);x.fill();x.restore()}
-  x.restore()}
-async function arShoot(){
-  if(arBusy||!arOn||!arVid.videoWidth)return;arBusy=true;
-  try{
-    try{await Promise.all([document.fonts.load('17px "Special Elite"'),document.fonts.load('13px "Courier Prime"')])}catch(e){}
-    const W=DW,H=DH,k=Math.max(1,Math.min(devicePixelRatio||1,2400/Math.max(W,H))),cv=document.createElement('canvas');
-    cv.width=Math.round(W*k);cv.height=Math.round(H*k);
-    const x=cv.getContext('2d');x.scale(k,k);
-    const vw=arVid.videoWidth,vh=arVid.videoHeight,s=Math.max(W/vw,H/vh),sw=W/s,sh=H/s;
-    x.drawImage(arVid,(vw-sw)/2,(vh-sh)/2,sw,sh,0,0,W,H);
-    DS.items.filter(i=>!i.leaving&&cardOf(i.id)).sort((a,b)=>a.z-b.z).forEach(i=>arCard(x,i,cardOf(i.id)));
-    x.font='700 12px "Courier Prime",monospace';x.textAlign='center';x.textBaseline='middle';
-    const tw=x.measureText(PROMO).width+24;x.fillStyle='rgba(255,247,220,.9)';arRR(x,(W-tw)/2,H-40,tw,26,13);x.fill();
-    x.fillStyle='#2b2418';x.fillText(PROMO,W/2,H-27);
-    const fl=document.createElement('div');fl.className='dflash';$('desk').append(fl);setTimeout(()=>fl.remove(),340);thud(.5);hap(15);
-    const b=await new Promise(r=>cv.toBlob(r,'image/jpeg',.92));
-    if(!b){toast(t('arFail'));return}
-    if(arUrl)URL.revokeObjectURL(arUrl);arBlob=b;arUrl=URL.createObjectURL(b);$('arImg').src=arUrl;$('dr').showModal()}
-  catch(e){toast(t('arFail'))}
-  finally{arBusy=false}}
-$('dShot').onclick=arShoot;
-const arName=()=>'rolopro-desk-'+today()+'.jpg';
-function arDownload(){if(!arUrl)return;const a=document.createElement('a');a.href=arUrl;a.download=arName();document.body.append(a);a.click();a.remove()}
-$('arSave').onclick=()=>{arDownload();toast(t('arSaved'))};
-$('arRetake').onclick=()=>$('dr').close();
-$('arShare').onclick=async()=>{
-  if(!arBlob)return;let f=null;try{f=new File([arBlob],arName(),{type:'image/jpeg'})}catch(e){}
-  if(f&&navigator.share&&navigator.canShare&&navigator.canShare({files:[f]})){
-    try{await navigator.share({files:[f],text:PROMO});return}catch(e){if(e&&e.name==='AbortError')return}}
-  arDownload();toast(t('arShareFb'),5000)};
-$('dr').addEventListener('close',()=>{$('arImg').removeAttribute('src');if(arUrl){URL.revokeObjectURL(arUrl);arUrl=null;arBlob=null}});
 
 loadDesk();
 
