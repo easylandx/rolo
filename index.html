@@ -904,12 +904,11 @@ $('sf').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)ret
 
 
 /* ---------- Reels: vertical swipe popup with public-domain films (Internet Archive) ----------
-   Paste each direct MP4 URL (https://archive.org/download/<identifier>/<file>.mp4) into "src".
-   An empty src shows a friendly "unavailable" message instead of a broken player. */
+   Each "src" is a direct public-domain MP4 from the Internet Archive. Entries with an empty src are skipped. */
 const REELS_ALL=[
- {src:'',en:'Office Etiquette (1950) — Life Before the 1958 Rolodex',es:'Etiqueta de Oficina (1950) — Antes del Rolodex de 1958'},
- {src:'',en:'The Town & The Telephone (1950) — Clerical Card Files',es:'La Ciudad y el Teléfono (1950) — Ficheros Manuales'},
- {src:'',en:'Telephone Etiquette (1952) — Classic Dialing & Contacts',es:'Etiqueta Telefónica (1952) — Llamadas y Contactos'},
+ {src:'https://archive.org/download/OfficeEt1950/OfficeEt1950_512kb.mp4',en:'Office Etiquette (1950) — Life Before the 1958 Rolodex',es:'Etiqueta de Oficina (1950) — Antes del Rolodex de 1958'},
+ {src:'https://archive.org/download/Townandt1950/Townandt1950_512kb.mp4',en:'The Town & The Telephone (1950) — Clerical Card Files',es:'La Ciudad y el Teléfono (1950) — Ficheros Manuales'},
+ {src:'https://archive.org/download/TelephoneEtiquette/TelephoneEtiquette.mp4',en:'Telephone Etiquette (1952) — Classic Dialing & Contacts',es:'Etiqueta Telefónica (1952) — Llamadas y Contactos'},
  /* Verified public-domain Internet Archive films (lighter 512kb versions for mobile) */
  {src:'https://archive.org/download/OfficeCo1952/OfficeCo1952_512kb.mp4',en:'Office Courtesy: Meeting the Public (1952) \u2014 Front-Desk Manners',es:'Cortes\u00eda en la Oficina: Atender al P\u00fablico (1952) \u2014 Modales en Recepci\u00f3n'},
  {src:'https://archive.org/download/AdventuresInTelezonia/AdventuresInTelezonia.mp4',en:'Adventures in Telezonia (1949) \u2014 Bell System Phone Manners',es:'Aventuras en Telezonia (1949) \u2014 Buenos Modales Telef\u00f3nicos'},
