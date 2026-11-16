@@ -911,7 +911,7 @@ $('sf').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)ret
   try{const bm=await createImageBitmap(f,{imageOrientation:'from-image'});scanPhoto(toCanvas(bm,bm.width,bm.height))}catch(err){scanMsg(t('scanFail'))}};
 
 
-/* ---------- Reels: vertical swipe popup with public-domain films (Internet Archive) ----------
+/* ---------- Reels: vertical swipe popup with public-domain films and TV ads (Internet Archive) ----------
    Each "src" is a direct public-domain MP4 from the Internet Archive. Entries with an empty src are skipped. */
 const REELS_ALL=[
  {src:'https://archive.org/download/OfficeEt1950/OfficeEt1950_512kb.mp4',en:'Office Etiquette (1950) — Life Before the 1958 Rolodex',es:'Etiqueta de Oficina (1950) — Antes del Rolodex de 1958'},
@@ -924,7 +924,16 @@ const REELS_ALL=[
  {src:'https://archive.org/download/WeLearnA1965/WeLearnA1965_512kb.mp4',en:'We Learn About the Telephone (1965) \u2014 Phone Basics',es:'Aprendemos sobre el Tel\u00e9fono (1965) \u2014 Lo B\u00e1sico'},
  {src:'https://archive.org/download/Telephon1946/Telephon1946_512kb.mp4',en:'Telephone and Telegraph (1946) \u2014 How Communication Works',es:'Tel\u00e9fono y Tel\u00e9grafo (1946) \u2014 C\u00f3mo Funciona la Comunicaci\u00f3n'},
  {src:'https://archive.org/download/Secretar1947/Secretar1947_512kb.mp4',en:"The Secretary's Day (1947) \u2014 A Day at the Desk",es:'El D\u00eda de una Secretaria (1947) \u2014 Una Jornada en el Escritorio'},
- {src:'https://archive.org/download/HowtoUse1927/HowtoUse1927_512kb.mp4',en:'How to Use the Dial Phone (1927) \u2014 Early Dialing Lesson',es:'C\u00f3mo Usar el Tel\u00e9fono de Disco (1927) \u2014 Primera Lecci\u00f3n de Marcaci\u00f3n'}
+ {src:'https://archive.org/download/HowtoUse1927/HowtoUse1927_512kb.mp4',en:'How to Use the Dial Phone (1927) \u2014 Early Dialing Lesson',es:'C\u00f3mo Usar el Tel\u00e9fono de Disco (1927) \u2014 Primera Lecci\u00f3n de Marcaci\u00f3n'},
+ /* Vintage TV ads (Internet Archive, Classic TV Commercials, public domain, 512kb MP4s) */
+ {src:'https://archive.org/download/UNIVAC-AD-2/UNIVAC2_512kb.mp4',en:'AD \u00b7 UNIVAC Computer (1956) \u2014 Remington Rand Goes Electronic',es:'ANUNCIO \u00b7 Computadora UNIVAC (1956) \u2014 Remington Rand se vuelve electr\u00f3nica'},
+ {src:'https://archive.org/download/Gold_Medal_Flour/Gold_Medal_Flour_512kb.mp4',en:'AD \u00b7 Gold Medal Flour (1951) \u2014 Early TV Commercial',es:'ANUNCIO \u00b7 Harina Gold Medal (1951) \u2014 Primer anuncio de TV'},
+ {src:'https://archive.org/download/ClassicTelevisionCommercialForblueCheerad3/BlueCheer3_512kb.mp4',en:'AD \u00b7 Blue Cheer Detergent (early 1950s) \u2014 Classic TV Spot',es:'ANUNCIO \u00b7 Detergente Blue Cheer (principios de los 50) \u2014 Spot cl\u00e1sico de TV'},
+ /* More vintage ads by sector: cars, airlines, tobacco, cereal (Internet Archive, public domain) */
+ {src:'https://archive.org/download/Wonderfu1960/Wonderfu1960_512kb.mp4',en:'AD \u00b7 CARS \u00b7 Ford: A Wonderful New World (1960) \u2014 Compacts Meet the Space Age',es:'ANUNCIO \u00b7 COCHES \u00b7 Ford: Un Nuevo Mundo Maravilloso (1960) \u2014 Compactos de la Era Espacial'},
+ {src:'https://archive.org/download/EasternAirlines1965/EasternAirlines1965.mp4',en:'AD \u00b7 AIRLINES \u00b7 Eastern Airlines (1965) \u2014 Jet Age TV Spot',es:'ANUNCIO \u00b7 AEROL\u00cdNEAS \u00b7 Eastern Airlines (1965) \u2014 Spot de la Era del Jet'},
+ {src:'https://archive.org/download/LuckyStr1948_2/LuckyStr1948_2_512kb.mp4',en:'AD \u00b7 TOBACCO \u00b7 Lucky Strike: Square Dance (1948) \u2014 Stop-Motion Cigarettes',es:'ANUNCIO \u00b7 TABACO \u00b7 Lucky Strike: Baile Campestre (1948) \u2014 Cigarrillos en Stop-Motion'},
+ {src:'https://archive.org/download/Better_Than_The_Betty_Hutton_Show/Sugar_Smacks_Cereal_512kb.mp4',en:'AD \u00b7 FOOD \u00b7 Kellogg\u2019s Sugar Smacks (1954) \u2014 Super Circus Cereal Spot',es:'ANUNCIO \u00b7 COMIDA \u00b7 Sugar Smacks de Kellogg\u2019s (1954) \u2014 Spot de cereales en Super Circus'}
 ];
 /* Slides with an empty src are skipped, so paste your own MP4 URLs above and they appear automatically. */
 const REELS=REELS_ALL.filter(r=>r.src);
