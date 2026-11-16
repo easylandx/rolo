@@ -164,7 +164,7 @@ label.f{display:block;font-size:12px;letter-spacing:.04em;margin:9px 0 3px}
     <button class="b" id="edit" data-i18n="edit">Edit</button>
     <button class="b" id="addc" data-i18n="addc">Add to contacts</button>
     <button class="b p" id="qrb" data-i18n="qr">QR code</button>
-    <button class="b p" id="deskb">Desk</button>
+    <button class="b p" id="deskb">Desk</button><button class="b p" id="arb">AR Desk</button>
     <button class="b" id="del" data-i18n="del">Delete</button>
     <button class="b" id="delall" data-i18n="delAll">Delete all</button>
     <button class="b" id="pick" data-i18n="pick">Pick from phone</button>
@@ -747,6 +747,7 @@ async function arStart(){
 function arStop(){
   if(arStream){arStream.getTracks().forEach(x=>x.stop());arStream=null}
   arVid.srcObject=null;if(arOn){arOn=false;arSync()}}
+$('arb').onclick=()=>{openDesk();if(!DS.items.length)pullCurrent();if(!arOn)$('dAR').click()};
 $('dAR').onclick=async()=>{
   if(arOn){arStop();return}
   if(await arStart()){arOn=true;arSync();bamboo(1)}};
