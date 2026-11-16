@@ -113,6 +113,23 @@ label.f{display:block;font-size:12px;letter-spacing:.04em;margin:9px 0 3px}
 .dnail{position:absolute;left:50%;top:-6px;width:17px;height:17px;margin-left:-8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffb8aa,#d8321f 55%,#8f1b0e);box-shadow:2px 4px 4px rgba(0,0,0,.55);display:none;pointer-events:none}
 .dc.pinned .dnail{display:block}
 @media (max-width:400px){.dbar .b{padding:8px 9px;font-size:12px}}
+
+/* ---------- Reels ---------- */
+#drl{padding:0;width:min(420px,100vw);height:min(92vh,860px);height:min(92dvh,860px);max-height:none;overflow:hidden;background:#0d0a04}
+#drl::backdrop{background:rgba(40,28,4,.72);backdrop-filter:blur(3px)}
+.rl-x{position:absolute;top:10px;right:10px;z-index:6;width:44px;height:44px;border-radius:50%;border:2px solid #d9b247;background:var(--gold);color:#1d1d1f;font:700 20px Arial,sans-serif;line-height:1;cursor:pointer;box-shadow:0 3px 0 #a67f12;display:grid;place-items:center;padding:0;touch-action:manipulation}
+.rl-x:active{transform:translateY(2px);box-shadow:none}.rl-x:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.rl-s{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none;outline:0}
+.rl-s::-webkit-scrollbar{display:none}
+.rl-item{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;background:#000;cursor:pointer;overflow:hidden;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+.rl-v{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;display:block}
+.rl-mute{position:absolute;top:14px;left:14px;z-index:3;font-size:18px;line-height:1;background:rgba(0,0,0,.55);color:#fff;border-radius:999px;padding:6px 10px;pointer-events:none}
+.rl-err{position:absolute;inset:0;display:grid;place-items:center;padding:30px;text-align:center;color:#ffeec4;font:14px 'Courier Prime',monospace;background:#1a1408}
+.rl-err[hidden]{display:none}
+.rl-cap{position:absolute;left:0;right:0;bottom:0;padding:48px 16px max(18px,env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(0,0,0,.85));color:#fff3cf;pointer-events:none;display:flex;flex-direction:column;gap:7px}
+.rl-n{font:700 12px 'Courier Prime',monospace;opacity:.75}
+.rl-t{font:400 clamp(17px,4.8vw,20px)/1.25 'Special Elite',serif}
+.rl-h{align-self:flex-start;font:700 12px 'Courier Prime',monospace;background:rgba(240,184,35,.95);color:#1d1d1f;padding:4px 10px;border-radius:999px}
 </style>
 </head>
 <body>
@@ -152,6 +169,7 @@ label.f{display:block;font-size:12px;letter-spacing:.04em;margin:9px 0 3px}
     <button class="b" id="snd" aria-pressed="true">Sound on</button>
     <button class="b" id="bk" data-i18n="bk">Backup</button>
     <button class="b" id="help" data-i18n="help">Help</button>
+    <button class="b" id="reels" data-i18n="reels">Reels</button>
   </div>
   <label class="dz" id="dz"><span data-i18n="drop">Drop a .vcf, .csv or .json file here, or tap to choose one</span><input type="file" id="vf" accept=".vcf,.csv,.json,text/vcard,text/x-vcard,text/csv,application/json" multiple></label>
   <p class="cc"><label><span data-i18n="cc">Default country code</span> <input id="cc" inputmode="numeric" placeholder="34" maxlength="4"></label></p>
@@ -190,6 +208,7 @@ label.f{display:block;font-size:12px;letter-spacing:.04em;margin:9px 0 3px}
   <div class="bkl"><button class="b p" id="bkJ"><span data-i18n="bkJson"></span><small data-i18n="bkJsonS"></small></button><button class="b" id="bkV"><span data-i18n="bkVcf"></span><small data-i18n="bkVcfS"></small></button><button class="b" id="bkC"><span data-i18n="bkCsv"></span><small data-i18n="bkCsvS"></small></button></div>
   <div class="row"><button class="b" id="bkX" data-i18n="close">Close</button></div></dialog>
 <dialog id="dh"><h2 data-i18n="helpTitle">Import your contacts</h2><div id="hb"></div><div class="row"><button class="b p" id="hx" data-i18n="close">Close</button></div></dialog>
+<dialog id="drl" aria-label="Reels"><button type="button" class="rl-x" id="rlX" aria-label="Close" data-aria="reelsClose">✕</button><div class="rl-s" id="rlS" tabindex="0"></div></dialog>
 <section id="desk" hidden aria-label="Desk">
   <div id="dwood"></div>
   <div id="dsurf">
@@ -214,7 +233,8 @@ en:{sub:'Flip to a card. Ping them on WhatsApp.',search:'Search name, company or
 es:{sub:'Pasa a una ficha. Escríbeles por WhatsApp.',search:'Buscar nombre, empresa o número',searchAria:'Buscar fichas',prev:'Ficha anterior',call:'Llamar',addc:'Añadir a contactos',addcDone:'Archivo de contacto listo. Ábrelo para añadir a esta persona a los contactos de tu móvil.',bk:'Copia de seguridad',bkTitle:'Copia de seguridad y exportar',bkHint:'Guarda todas tus fichas. Para restaurarlas, suelta el archivo .json en el recuadro de importar.',bkCount:n=>`${n} ficha${n===1?'':'s'} lista${n===1?'':'s'} para guardar`,bkJson:'Copia de seguridad (.json)',bkJsonS:'Todos los campos, ideal para restaurar',bkVcf:'Contactos (.vcf)',bkVcfS:'Se abre en Google, iCloud, Outlook y tu móvil',bkCsv:'Hoja de cálculo (.csv)',bkCsvS:'Se abre en Excel y Google Sheets',saved:'Descarga iniciada',noneToSave:'No hay fichas que guardar',help:'Ayuda',helpTitle:'Importa tus contactos',close:'Cerrar',helpData:[["Exportar desde Gmail (Google Contactos)", ["Abre contacts.google.com en tu ordenador.", "Marca los contactos que quieras, o no marques ninguno para llevarte todos.", "Pulsa Exportar (menú de la izquierda o menú ⋮), elige CSV de Google o vCard y pulsa Exportar."]], ["Exportar desde Outlook en Windows", ["Nuevo Outlook / outlook.com: abre Personas, pulsa Administrar, después Exportar contactos y elige Todos los contactos.", "Outlook clásico: Archivo > Abrir y exportar > Importar/Exportar > Exportar a un archivo > Valores separados por comas > carpeta Contactos > Finalizar.", "El archivo se guarda en tu carpeta Descargas."]], ["Envía el archivo a tu móvil", ["WhatsApp: abre WhatsApp Web o de escritorio, entra en el chat contigo mismo (Enviarte un mensaje), adjunta el archivo como Documento y envíalo. En el móvil, abre ese chat, toca el archivo y elige Guardar o Compartir > Archivos.", "Otras formas: envíatelo por correo, súbelo a Google Drive o iCloud Drive, AirDrop (iPhone), Quick Share (Android) o un cable USB."]], ["Impórtalo en RoloPro", ["En el móvil, abre RoloPro y toca el recuadro de líneas discontinuas (\"Suelta aquí un archivo .vcf, .csv o .json, o toca para elegirlo\").", "Elige el archivo desde Archivos, Descargas o Drive.", "Tus fichas aparecen en segundos. Los contactos que ya tienes se actualizan, sin duplicarse.", "Consejo: configura antes el Prefijo de país por defecto para que los botones de WhatsApp y llamada funcionen con números locales."]]],mail:'Enviar email',noEmail:'Esta ficha no tiene correo electrónico',next:'Ficha siguiente',ping:'WHATSAPP',add:'Añadir ficha',edit:'Editar',del:'Eliminar',delAll:'Eliminar todas',pick:'Elegir del móvil',sndOn:'Sonido activado',sndOff:'Sonido desactivado',rnd:'Random',autoOn:'Auto',autoOff:'Pausar',drop:'Suelta aquí un archivo .vcf, .csv o .json, o toca para elegirlo',cc:'Prefijo de país por defecto',newCard:'Nueva ficha',editCard:'Editar ficha',fName:'Nombre',fCompany:'Empresa',fPhone:'Teléfono',fWa:'Número de WhatsApp (si es distinto)',fCat:'Categoría',fNotes:'Notas',cat_Friend:'Amigo',cat_Family:'Familia',cat_Work:'Trabajo',cat_Client:'Cliente',cat_Other:'Otro',cancel:'Cancelar',save:'Guardar ficha',msgTo:'Mensaje para',hint:'Se adjunta la imagen de RoloPro y se añade "RoloPro easylandx.github.io/rolopro" en la línea siguiente.',openWa:'Abrir WhatsApp',tel:'Tel.',email:'Email',addr:'Dirección',fEmail:'Correo electrónico',fAddr:'Dirección',of:'de',zero:'0 fichas',noCards:'No se encontraron fichas',noCardsHint:'Añade una ficha o borra la búsqueda.',noUnder:l=>`No hay fichas con la ${l}`,addFirst:'Primero añade una ficha',noPhone:'Esta ficha no tiene número de teléfono',filed:'Ficha guardada',noDel:'No hay ninguna ficha que eliminar',delCardQ:n=>`¿Eliminar la ficha de ${n}?`,noneToDel:'No hay fichas que eliminar',delAllQ:n=>`¿Eliminar las ${n} fichas? Esta acción no se puede deshacer.`,allDeleted:'Todas las fichas eliminadas',filedN:n=>`${n} ficha${n>1?'s':''} nueva${n>1?'s':''} guardada${n>1?'s':''}`,nothingNew:'No hay nada nuevo que guardar',noVcf:'No se encontraron contactos en ese archivo',importDone:(n,u)=>`${n} nuevas, ${u} actualizadas`,fExtra:'Otros campos (uno por línea, Etiqueta: valor)',noPicker:'El selector de contactos solo funciona en Chrome para Android. Importa un archivo .vcf.',hi:n=>`¡Hola ${n}! `,copied:'Imagen copiada. Pulsa Ctrl+V en el chat de WhatsApp para añadirla.',copiedM:'Imagen copiada. En el chat, toca el cuadro de mensaje y elige Pegar para añadirla.',copyFail:'No se pudo copiar la imagen. Tu mensaje está listo en WhatsApp.',noCopy:'Tu navegador no puede copiar la imagen. Tu mensaje está listo en WhatsApp.',presets:['¡Hola! ¿Tienes un minuto?','¡Muchas gracias!','¿Podemos hablar más tarde hoy?','¡Feliz cumpleaños!'],jump:l=>`Ir a la ${l}`,alt:'Fichero de escritorio con teclas laterales de la A a la Z'}
 };
 Object.assign(I18N.en,{scan:'Scan card',scanTitle:'Scan a business card',scanHint:'Fill the frame with the card. A QR contact code is read automatically.',scanQrLink:'QR link found. Now capture the printed card.',scanQrDone:l=>`QR contact read. Language: ${l}. Check the details and save.`,scanCapture:'Capture',scanPhoto:'Use a photo',scanReading:'Reading the card…',scanLoad:'Loading the reader (first time only)…',scanNoCam:'Camera not available. Choose a photo instead.',scanFail:'Could not read any text. Try again with more light.',scanDone:l=>`Card read. Language: ${l}. Check the details and save.`,cardLang:'Card language',langNone:'Not set',scanErr:'The reader could not load. Check your connection and try again.',fTitle:'Job title'});
-Object.assign(I18N.es,{scan:'Escanear tarjeta',scanTitle:'Escanear una tarjeta de visita',scanHint:'Encuadra la tarjeta. Si tiene un código QR de contacto, se lee solo.',scanQrLink:'Enlace QR encontrado. Ahora captura la tarjeta impresa.',scanQrDone:l=>`Contacto QR leído. Idioma: ${l}. Revisa los datos y guarda.`,scanCapture:'Capturar',scanPhoto:'Usar una foto',scanReading:'Leyendo la tarjeta…',scanLoad:'Cargando el lector (solo la primera vez)…',scanNoCam:'No se pudo usar la cámara. Elige una foto.',scanFail:'No se pudo leer texto. Prueba de nuevo con más luz.',scanDone:l=>`Tarjeta leída. Idioma: ${l}. Revisa los datos y guarda.`,cardLang:'Idioma de la tarjeta',langNone:'Sin definir',scanErr:'No se pudo cargar el lector. Revisa tu conexión e inténtalo de nuevo.',fTitle:'Cargo'});Object.assign(I18N.en,{qr:'QR code',qrTitle:'Share this card',qrHint:'Scan with any phone camera to save this contact.',qrWa:'Send as vCard on WhatsApp',qrWaS:'Opens the share sheet and sends the contact file',qrSave:'Save contact file (.vcf)',qrSaveS:'Opens in your phone, Google, iCloud and Outlook contacts',qrWaFallback:'Contact file saved. In WhatsApp, attach it as a Document. The details are also in the message.',qrFail:'This card has too much data for a QR code. Use the .vcf file instead.'});Object.assign(I18N.es,{qr:'Código QR',qrTitle:'Comparte esta ficha',qrHint:'Escanéalo con la cámara de cualquier móvil para guardar este contacto.',qrWa:'Enviar como vCard por WhatsApp',qrWaS:'Abre el menú de compartir y envía el archivo de contacto',qrSave:'Guardar archivo de contacto (.vcf)',qrSaveS:'Se abre en los contactos de tu móvil, Google, iCloud y Outlook',qrWaFallback:'Archivo de contacto guardado. En WhatsApp, adjúntalo como Documento. Los datos también van en el mensaje.',qrFail:'Esta ficha tiene demasiados datos para un código QR. Usa el archivo .vcf.'});Object.assign(I18N.en,{desk:'Desk',onDesk:n=>`${n} on desk`,deskBack:'‹ Back to Rolodex',deskPull:'Pull a card',deskClear:'Clear desk',deskLater:'Later',deskArchive:'Archive',deskPin:'Pin card',deskUnpin:'Unpin card',deskReturn:'Remove from desk',deskHint:'Drag and flick cards. Double-tap to pin. Throw them into a tray.',deskEmpty:'Tap Pull a card, or long-press a card in the rolodex.',deskNoCards:'No cards left in the rolodex',deskPinned:'Pinned. Double-tap to unpin.'});Object.assign(I18N.es,{desk:'Escritorio',onDesk:n=>`${n} en el escritorio`,deskBack:'‹ Volver al Rolodex',deskPull:'Sacar una ficha',deskClear:'Vaciar escritorio',deskLater:'Más tarde',deskArchive:'Archivo',deskPin:'Fijar ficha',deskUnpin:'Soltar ficha',deskReturn:'Quitar del escritorio',deskHint:'Arrastra y lanza las fichas. Toca dos veces para fijar. Lánzalas a una bandeja.',deskEmpty:'Pulsa Sacar una ficha, o mantén pulsada una ficha del rolodex.',deskNoCards:'No quedan fichas en el rolodex',deskPinned:'Fijada. Toca dos veces para soltarla.'});let lang=st.get('rc.lang',/^es/i.test(navigator.language||'')?'es':'en');if(!I18N[lang])lang='en';
+Object.assign(I18N.es,{scan:'Escanear tarjeta',scanTitle:'Escanear una tarjeta de visita',scanHint:'Encuadra la tarjeta. Si tiene un código QR de contacto, se lee solo.',scanQrLink:'Enlace QR encontrado. Ahora captura la tarjeta impresa.',scanQrDone:l=>`Contacto QR leído. Idioma: ${l}. Revisa los datos y guarda.`,scanCapture:'Capturar',scanPhoto:'Usar una foto',scanReading:'Leyendo la tarjeta…',scanLoad:'Cargando el lector (solo la primera vez)…',scanNoCam:'No se pudo usar la cámara. Elige una foto.',scanFail:'No se pudo leer texto. Prueba de nuevo con más luz.',scanDone:l=>`Tarjeta leída. Idioma: ${l}. Revisa los datos y guarda.`,cardLang:'Idioma de la tarjeta',langNone:'Sin definir',scanErr:'No se pudo cargar el lector. Revisa tu conexión e inténtalo de nuevo.',fTitle:'Cargo'});Object.assign(I18N.en,{qr:'QR code',qrTitle:'Share this card',qrHint:'Scan with any phone camera to save this contact.',qrWa:'Send as vCard on WhatsApp',qrWaS:'Opens the share sheet and sends the contact file',qrSave:'Save contact file (.vcf)',qrSaveS:'Opens in your phone, Google, iCloud and Outlook contacts',qrWaFallback:'Contact file saved. In WhatsApp, attach it as a Document. The details are also in the message.',qrFail:'This card has too much data for a QR code. Use the .vcf file instead.'});Object.assign(I18N.es,{qr:'Código QR',qrTitle:'Comparte esta ficha',qrHint:'Escanéalo con la cámara de cualquier móvil para guardar este contacto.',qrWa:'Enviar como vCard por WhatsApp',qrWaS:'Abre el menú de compartir y envía el archivo de contacto',qrSave:'Guardar archivo de contacto (.vcf)',qrSaveS:'Se abre en los contactos de tu móvil, Google, iCloud y Outlook',qrWaFallback:'Archivo de contacto guardado. En WhatsApp, adjúntalo como Documento. Los datos también van en el mensaje.',qrFail:'Esta ficha tiene demasiados datos para un código QR. Usa el archivo .vcf.'});Object.assign(I18N.en,{desk:'Desk',onDesk:n=>`${n} on desk`,deskBack:'‹ Back to Rolodex',deskPull:'Pull a card',deskClear:'Clear desk',deskLater:'Later',deskArchive:'Archive',deskPin:'Pin card',deskUnpin:'Unpin card',deskReturn:'Remove from desk',deskHint:'Drag and flick cards. Double-tap to pin. Throw them into a tray.',deskEmpty:'Tap Pull a card, or long-press a card in the rolodex.',deskNoCards:'No cards left in the rolodex',deskPinned:'Pinned. Double-tap to unpin.'});Object.assign(I18N.es,{desk:'Escritorio',onDesk:n=>`${n} en el escritorio`,deskBack:'‹ Volver al Rolodex',deskPull:'Sacar una ficha',deskClear:'Vaciar escritorio',deskLater:'Más tarde',deskArchive:'Archivo',deskPin:'Fijar ficha',deskUnpin:'Soltar ficha',deskReturn:'Quitar del escritorio',deskHint:'Arrastra y lanza las fichas. Toca dos veces para fijar. Lánzalas a una bandeja.',deskEmpty:'Pulsa Sacar una ficha, o mantén pulsada una ficha del rolodex.',deskNoCards:'No quedan fichas en el rolodex',deskPinned:'Fijada. Toca dos veces para soltarla.'});Object.assign(I18N.en,{reels:'Reels',reelsTitle:'Reels: vintage office films',reelsClose:'Close',reelsTapSound:'Tap video for sound',reelsTapMute:'Tap to mute',reelsSwipe:'Swipe up for next',reelsUnavail:'Video unavailable right now'});Object.assign(I18N.es,{reels:'Reels',reelsTitle:'Reels: películas de oficina clásicas',reelsClose:'Cerrar',reelsTapSound:'Toca el vídeo para activar el sonido',reelsTapMute:'Toca para silenciar',reelsSwipe:'Desliza hacia arriba para el siguiente',reelsUnavail:'Vídeo no disponible ahora mismo'});
+let lang=st.get('rc.lang',/^es/i.test(navigator.language||'')?'es':'en');if(!I18N[lang])lang='en';
 const t=(k,...a)=>{const v=I18N[lang][k]??I18N.en[k];return typeof v==='function'?v(...a):v};
 const catName=c=>I18N[lang]['cat_'+c]||c;
 function buildChips(){const box=$('chips');box.innerHTML='';t('presets').forEach(p=>{const b=document.createElement('button');b.type='button';b.className='b';b.textContent=p;b.onclick=()=>{$('pm').value=p};box.append(b)})}
@@ -226,7 +246,7 @@ function applyLang(){
   document.querySelectorAll('[data-alt]').forEach(e=>e.alt=t(e.dataset.alt));
   document.querySelectorAll('.key').forEach(k=>k.setAttribute('aria-label',t('jump',k.dataset.l)));
   document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang));
-  buildChips();buildHelp();autoLabel();sndLabel();paint();deskRefresh();
+  buildChips();buildHelp();autoLabel();sndLabel();paint();deskRefresh();reelsLang();
 }
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;st.set('rc.lang',lang);applyLang();});
 const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
@@ -882,6 +902,55 @@ $('sp_').onclick=()=>$('sf').click();
 $('sf').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;
   try{const bm=await createImageBitmap(f,{imageOrientation:'from-image'});scanPhoto(toCanvas(bm,bm.width,bm.height))}catch(err){scanMsg(t('scanFail'))}};
 
+
+/* ---------- Reels: vertical swipe popup with public-domain films (Internet Archive) ----------
+   Paste each direct MP4 URL (https://archive.org/download/<identifier>/<file>.mp4) into "src".
+   An empty src shows a friendly "unavailable" message instead of a broken player. */
+const REELS=[
+ {src:'',en:'Office Etiquette (1950) — Life Before the 1958 Rolodex',es:'Etiqueta de Oficina (1950) — Antes del Rolodex de 1958'},
+ {src:'',en:'The Town & The Telephone (1950) — Clerical Card Files',es:'La Ciudad y el Teléfono (1950) — Ficheros Manuales'},
+ {src:'',en:'Telephone Etiquette (1952) — Classic Dialing & Contacts',es:'Etiqueta Telefónica (1952) — Llamadas y Contactos'}
+];
+const rlD=$('drl'),rlS=$('rlS');let rlIO=null,rlMuted=true;
+const rlCap=r=>r[lang]||r.en;
+function reelsLang(){
+  rlD.setAttribute('aria-label',t('reelsTitle'));
+  rlS.querySelectorAll('.rl-item').forEach(s=>{const i=+s.dataset.i,r=REELS[i],e=s.querySelector('.rl-err');
+    s.querySelector('.rl-t').textContent=rlCap(r);
+    s.querySelector('.rl-n').textContent=`${i+1}/${REELS.length}`+(i<REELS.length-1?' · '+t('reelsSwipe'):'');
+    s.querySelector('.rl-h').textContent=t(rlMuted?'reelsTapSound':'reelsTapMute');
+    s.querySelector('.rl-mute').textContent=rlMuted?'🔇':'🔊';
+    if(!e.hidden)e.textContent=t('reelsUnavail');
+    s.querySelector('video').setAttribute('aria-label',rlCap(r))})}
+function reelsBuild(){
+  rlS.innerHTML='';
+  REELS.forEach((r,i)=>{const s=document.createElement('section');s.className='rl-item';s.dataset.i=i;
+    s.innerHTML='<video class="rl-v" loop muted playsinline preload="none"></video><div class="rl-mute" aria-hidden="true"></div><div class="rl-err" hidden></div><div class="rl-cap"><span class="rl-n"></span><b class="rl-t"></b><span class="rl-h"></span></div>';
+    s.querySelector('video').setAttribute('webkit-playsinline','');rlS.append(s)});
+  reelsLang()}
+function rlPlay(v,i){
+  const r=REELS[i],e=v.closest('.rl-item').querySelector('.rl-err');
+  if(!r.src){e.hidden=false;e.textContent=t('reelsUnavail');return}
+  if(!v.getAttribute('src')){v.onerror=()=>{e.hidden=false;e.textContent=t('reelsUnavail')};v.onplaying=()=>{e.hidden=true};v.src=r.src}
+  v.muted=rlMuted;
+  const p=v.play();
+  if(p&&p.catch)p.catch(()=>{if(!v.muted){v.muted=true;rlMuted=true;reelsLang();v.play().catch(()=>{})}})}
+function rlObserve(){
+  if(rlIO)rlIO.disconnect();
+  rlIO=new IntersectionObserver(es=>es.forEach(en=>{const v=en.target.querySelector('video');
+    if(en.isIntersecting&&en.intersectionRatio>=.6)rlPlay(v,+en.target.dataset.i);else v.pause()}),{root:rlS,threshold:[0,.6,1]});
+  rlS.querySelectorAll('.rl-item').forEach(s=>rlIO.observe(s))}
+function reelsUnload(){
+  if(rlIO){rlIO.disconnect();rlIO=null}
+  rlS.querySelectorAll('video').forEach(v=>{v.pause();v.onerror=v.onplaying=null;v.removeAttribute('src');try{v.load()}catch(e){}});
+  rlS.innerHTML=''}
+$('reels').onclick=()=>{bamboo();rlMuted=true;reelsBuild();rlD.showModal();rlS.scrollTop=0;rlObserve();rlS.focus({preventScroll:true})};
+$('rlX').onclick=()=>rlD.close();
+rlD.addEventListener('close',reelsUnload);
+rlD.addEventListener('click',e=>{if(e.target===rlD)rlD.close()});
+rlS.addEventListener('click',e=>{const s=e.target.closest('.rl-item');if(!s)return;
+  rlMuted=!rlMuted;const v=s.querySelector('video');v.muted=rlMuted;reelsLang()});
+document.addEventListener('visibilitychange',()=>{if(!rlD.open)return;if(document.hidden)rlS.querySelectorAll('video').forEach(v=>v.pause());else rlObserve()});
 
 build();applyLang();
 
