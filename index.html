@@ -48,7 +48,7 @@ h1 span{color:#c8921a}
 dialog{margin:auto;border:3px solid #e3b94a;border-radius:16px;background:#fffaf0;color:var(--ink);padding:20px;width:min(440px,calc(100vw - 32px));font-family:'Courier Prime',monospace}
 dialog::backdrop{background:rgba(150,110,20,.35);backdrop-filter:blur(2px)}
 dialog h2{font:400 22px 'Special Elite',serif;margin-bottom:10px}
-.sq{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 6px;font-size:12px}.sq[hidden]{display:none}.sq>span{flex:1 0 100%}.sq .b{display:inline-flex;align-items:center;justify-content:center;padding:4px 8px;font-size:12px;min-height:0;white-space:nowrap}.sq .b svg{width:16px;height:16px;flex:none}.sq a,.sl a{color:inherit}
+.sq{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 6px;font-size:12px}.sq[hidden]{display:none}.sq>span{flex:1 0 100%}.sq .b{display:inline-flex;align-items:center;justify-content:center;padding:4px 8px;font-size:12px;min-height:0;white-space:nowrap}.sq .b svg{width:16px;height:16px;flex:none}.sq a,.sl a{color:inherit}.sl a{text-decoration:underline;text-underline-offset:2px;cursor:pointer}
 label.f{display:block;font-size:12px;letter-spacing:.04em;margin:9px 0 3px}
 .t{width:100%;font:16px 'Courier Prime',monospace;padding:9px 10px;border:2px solid #e3c36a;border-radius:8px;background:#fff;color:var(--ink)}
 .row{display:flex;gap:10px;margin-top:16px;justify-content:flex-end}
@@ -381,6 +381,9 @@ let V=[],idx=0,busy=false;
 const FL=new Set(),HAS={wa:c=>String(c.wa||'').replace(/\D/g,'').length>3,li:c=>!!c.li,fb:c=>!!c.fb,ig:c=>String(c.social||'').split(/\n+/).some(v=>/instagram\.com|^@/i.test(v.trim())),email:c=>String(c.email||'').includes('@')};
 function build(keep){all.forEach(fbPull);const s=norm($('q').value);pruneDesk();V=all.filter(c=>[...FL].every(k=>HAS[k](c))).filter(c=>!s||norm([c.name,c.company,c.title,c.email,c.addr,c.phone,c.wa,c.notes,c.social,c.fb,c.li].join(' ')).includes(s)).sort((a,b)=>a.name.localeCompare(b.name,undefined,{sensitivity:'base'}));const i=V.findIndex(c=>c.id===keep);idx=i>=0?i:0}
 [...A].forEach((ch,i)=>{const b=document.createElement('button');b.className='key';b.textContent=ch;b.dataset.l=ch;b.setAttribute('aria-label','Jump to '+ch);b.onclick=()=>jump(ch);(i<13?$('rl'):$('rr')).append(b)});
+const linkEmail=v=>{const l=String(v||'').split(/[,;\s]+/).filter(x=>x.includes('@'));return l.length?l.map(x=>`<a class="em" href="mailto:${esc(x)}" data-em="${esc(x)}">${esc(x)}</a>`).join(', '):(esc(v)||'—')};
+const linkTel=v=>{const n=waNum(v);return n?`<a href="tel:${(/^\s*(\+|00)/.test(v)||st.get('rc.cc',''))?'+':''}${n}">${esc(v)}</a>`:(esc(v)||'—')};
+const linkWa=v=>{const n=waNum(v);return n?`<a href="https://wa.me/${n}" target="_blank" rel="noopener">${esc(v)}</a>`:(esc(v)||'—')};
 function paint(){
   const c=V[idx];
   $('count').textContent=V.length?`${idx+1} / ${V.length}`+($('q').value?` ${t('of')} ${all.length}`:''):t('zero');if(deskOut())$('count').textContent+=' · '+t('onDesk',deskOut());
@@ -388,7 +391,7 @@ function paint(){
   $('itab').textContent=!c?'—':i<0?'#':A[i-i%2]+'–'+A[i-i%2+1];
   const has=new Set(V.map(L));
   document.querySelectorAll('.key').forEach(k=>{k.classList.toggle('off',!has.has(k.dataset.l));k.classList.toggle('on',k.dataset.l===l)});
-  if(c)applyPal($('stack'),c);$('card').scrollTop=0;$('card').innerHTML=c?`<button type="button" class="cqr" aria-label="${esc(t('qr'))}" title="${esc(t('qr'))}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3zm2 2v4h4V5zm8-2h8v8h-8zm2 2v4h4V5zM3 13h8v8H3zm2 2v4h4v-4zm8 0h2v2h-2zm4 0h4v2h-2v2h-2zm-4 4h2v2h-2zm4 2h4v-2h-2v-2h-2z"/></svg></button><div class="nm">${esc(c.name)}</div><div class="r">${esc(c.company)}</div><div class="r x"><i>${t('email')}</i>${esc(c.email)||'—'}</div><div class="r"><i>${t('tel')}</i>${esc(c.phone)||'—'}</div><div class="r"><i>WhatsApp</i>${esc(c.wa||c.phone)||'—'}</div>${c.addr?`<div class="r x"><i>${t('addr')}</i>${esc(c.addr)}</div>`:''}${c.fb?`<div class="r x sl"><i>Facebook</i><a href="${esc(c.fb)}" target="_blank" rel="noopener">${esc(fbShow(c.fb))}</a></div>`:''}${c.li?`<div class="r x sl"><i>LinkedIn</i><a href="${esc(c.li)}" target="_blank" rel="noopener">${esc(fbShow(c.li))}</a></div>`:''}${c.social?`<div class="r x sl"><i>${t('social')}</i>${c.social.split(/\n+/).filter(Boolean).map(v=>`<a href="${esc(socUrl(v))}" target="_blank" rel="noopener">${socLbl(v)}</a>`).join(' · ')}</div>`:''}<div class="r"></div><div class="nt">${esc(c.notes)}</div>`:`<div class="nm">${t('noCards')}</div><div class="r">${t('noCardsHint')}</div>`;
+  if(c)applyPal($('stack'),c);$('card').scrollTop=0;$('card').innerHTML=c?`<button type="button" class="cqr" aria-label="${esc(t('qr'))}" title="${esc(t('qr'))}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3zm2 2v4h4V5zm8-2h8v8h-8zm2 2v4h4V5zM3 13h8v8H3zm2 2v4h4v-4zm8 0h2v2h-2zm4 0h4v2h-2v2h-2zm-4 4h2v2h-2zm4 2h4v-2h-2v-2h-2z"/></svg></button><div class="nm">${esc(c.name)}</div><div class="r">${esc(c.company)}</div><div class="r x sl"><i>${t('email')}</i>${linkEmail(c.email)}</div><div class="r sl"><i>${t('tel')}</i>${linkTel(c.phone)}</div><div class="r sl"><i>WhatsApp</i>${linkWa(c.wa||c.phone)}</div>${c.addr?`<div class="r x"><i>${t('addr')}</i>${esc(c.addr)}</div>`:''}${c.fb?`<div class="r x sl"><i>Facebook</i><a href="${esc(c.fb)}" target="_blank" rel="noopener">${esc(fbShow(c.fb))}</a></div>`:''}${c.li?`<div class="r x sl"><i>LinkedIn</i><a href="${esc(c.li)}" target="_blank" rel="noopener">${esc(fbShow(c.li))}</a></div>`:''}${c.social?`<div class="r x sl"><i>${t('social')}</i>${c.social.split(/\n+/).filter(Boolean).map(v=>`<a href="${esc(socUrl(v))}" target="_blank" rel="noopener">${socLbl(v)}</a>`).join(' · ')}</div>`:''}<div class="r"></div><div class="nt">${esc(c.notes)}</div>`:`<div class="nm">${t('noCards')}</div><div class="r">${t('noCardsHint')}</div>`;
   {const el=$('card');$('stack').style.touchAction=el.scrollHeight>el.clientHeight+2?'pan-y':'none'}
 }
 async function go(i,dir=1){
@@ -414,7 +417,7 @@ let wt=0;$('stack').addEventListener('wheel',e=>{const el=$('card');if(el.scroll
 async function fling(dir,n){const len=V.length;if(busy||len<2)return;if(n<=1)return go(idx+dir,dir);
   busy=true;for(let k=0;k<n-1;k++){idx=((idx+dir)%len+len)%len;paint();bamboo(.6);await new Promise(r=>setTimeout(r,40))}busy=false;go(idx+dir,dir)}
 (()=>{const st_=$('stack');let pts=null,pid=null;
-  st_.addEventListener('pointerdown',e=>{if(e.button||e.target.closest('.pull,.cqr'))return;pid=e.pointerId;pts=[{t:performance.now(),x:e.clientX,y:e.clientY}];try{st_.setPointerCapture(pid)}catch(_){}});
+  st_.addEventListener('pointerdown',e=>{if(e.button||e.target.closest('.pull,.cqr,a'))return;pid=e.pointerId;pts=[{t:performance.now(),x:e.clientX,y:e.clientY}];try{st_.setPointerCapture(pid)}catch(_){}});
   st_.addEventListener('pointermove',e=>{if(!pts||e.pointerId!==pid)return;pts.push({t:performance.now(),x:e.clientX,y:e.clientY});if(pts.length>40)pts.shift()});
   const end=e=>{if(window.__lp&&e.pointerId===pid){window.__lp=false;pts=null;return}if(!pts||e.pointerId!==pid)return;const P=pts;pts=null;if(e.type==='pointercancel')return;
     const now=performance.now(),f=P[0],l=P[P.length-1],dx=l.x-f.x,dy=l.y-f.y,vert=Math.abs(dy)>=Math.abs(dx),d=vert?dy:dx;
@@ -661,7 +664,7 @@ function openQR(){
   cv.setAttribute('aria-label',t('qr')+' · '+c.name);$('qrn').textContent=c.name;
   qrCard=c;bamboo();$('dq').showModal()}
 $('qrb').onclick=openQR;
-$('card').addEventListener('click',e=>{if(e.target.closest('.cqr'))openQR()});
+$('card').addEventListener('click',e=>{if(e.target.closest('.cqr'))openQR();const a=e.target.closest('a.em');if(a&&!isMobile){e.preventDefault();const w=window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(a.dataset.em),'_blank','noopener');if(!w)location.href=a.href}});
 $('qrX').onclick=()=>$('dq').close();
 $('qrV').onclick=()=>{const c=qrCard;if(!c)return;dl(vcfFile(c),'text/vcard;charset=utf-8',vcard(c,true)+'\r\n');toast(t('addcDone'),6000)};
 $('qrW').onclick=async()=>{
@@ -862,7 +865,7 @@ addEventListener('pagehide',()=>{if(DS.items.length||st.get(DK,null))saveDesk()}
 
 /* ----- long-press on a rolodex card pulls it out; keep dragging to place it ----- */
 (()=>{const s=$('stack'),stop=()=>{clearTimeout(lpT);lpT=null};
-  s.addEventListener('pointerdown',e=>{if(e.button||deskOpen||e.target.closest('.pull,.cqr')||!V.length)return;lpX=e.clientX;lpY=e.clientY;stop();
+  s.addEventListener('pointerdown',e=>{if(e.button||deskOpen||e.target.closest('.pull,.cqr,a')||!V.length)return;lpX=e.clientX;lpY=e.clientY;stop();
     const pid=e.pointerId;lpT=setTimeout(()=>{lpT=null;if(!V[idx])return;window.__lp=true;hap(18);openDesk(lpX,lpY);pullCard(V[idx],{held:true,x:lpX,y:lpY,pid})},520)});
   s.addEventListener('pointermove',e=>{if(handoff&&e.pointerId===handoff.pid){dragMove(handoff.it,e.clientX,e.clientY);return}if(lpT&&Math.hypot(e.clientX-lpX,e.clientY-lpY)>10)stop()});
   const up=e=>{stop();if(handoff&&e.pointerId===handoff.pid){dragEnd(handoff.it);handoff=null}};
