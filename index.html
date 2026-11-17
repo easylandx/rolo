@@ -27,6 +27,7 @@ h1 span{color:#c8921a}
 .stage{position:relative}
 .itab{position:absolute;left:50%;top:-24px;transform:translateX(-50%);min-width:120px;text-align:center;background:var(--gold);color:#1d1d1f;font:700 15px Arial,sans-serif;padding:5px 18px 4px;border-radius:10px 10px 0 0;z-index:1}
 .stack{position:relative;height:340px;perspective:900px;touch-action:none;cursor:grab;-webkit-user-select:none;user-select:none}
+.card,.card *{touch-action:none}.stack.sc .card,.stack.sc .card *{touch-action:pan-y}.card a{-webkit-user-drag:none}
 .card{position:absolute;inset:0 0 36px 0;z-index:2;background:var(--cb,#fbf0c4);border-radius:6px 6px 3px 3px;padding:14px 16px 40px;transform-origin:top;box-shadow:0 2px 0 var(--cs1,#d9bd5a),0 -3px 0 var(--cs2,#ecd98c);background-image:linear-gradient(transparent 25px,var(--cl,#e6b72f) 25px);background-size:100% 26px;background-origin:content-box;overflow:hidden;font-size:clamp(13px,3.6vw,16px);line-height:26px}
 .edge{position:absolute;left:0;right:0;bottom:0;height:42px;background:repeating-linear-gradient(var(--ce1,#f6e9ab) 0 3px,var(--ce2,#d8b94c) 3px 4px);border-radius:0 0 4px 4px}
 .pull{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);width:84px;height:28px;border:0;border-radius:8px;background:linear-gradient(#383838,#111);box-shadow:0 3px 0 #000,inset 0 1px 0 #555;cursor:pointer;z-index:3}
@@ -396,7 +397,7 @@ function paint(){
   const has=new Set(V.map(L));
   document.querySelectorAll('.key').forEach(k=>{k.classList.toggle('on',k.dataset.l===l)});
   if(c)applyPal($('stack'),c);$('card').scrollTop=0;$('card').innerHTML=c?`<button type="button" class="cqr" aria-label="${esc(t('qr'))}" title="${esc(t('qr'))}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3zm2 2v4h4V5zm8-2h8v8h-8zm2 2v4h4V5zM3 13h8v8H3zm2 2v4h4v-4zm8 0h2v2h-2zm4 0h4v2h-2v2h-2zm-4 4h2v2h-2zm4 2h4v-2h-2v-2h-2z"/></svg></button><div class="nm">${esc(c.name)}</div><div class="r">${esc(c.company)}</div><div class="r x sl"><i>${t('email')}</i>${linkEmail(c.email)}</div><div class="r sl"><i>${t('tel')}</i>${linkTel(c.phone)}</div><div class="r sl"><i>WhatsApp</i>${linkWa(c.wa||c.phone)}</div>${c.addr?`<div class="r x"><i>${t('addr')}</i>${esc(c.addr)}</div>`:''}${c.fb?`<div class="r x sl"><i>Facebook</i><a href="${esc(c.fb)}" target="_blank" rel="noopener">${esc(fbShow(c.fb))}</a></div>`:''}${c.li?`<div class="r x sl"><i>LinkedIn</i><a href="${esc(c.li)}" target="_blank" rel="noopener">${esc(fbShow(c.li))}</a></div>`:''}${c.social?`<div class="r x sl"><i>${t('social')}</i>${c.social.split(/\n+/).filter(Boolean).map(v=>`<a href="${esc(socUrl(v))}" target="_blank" rel="noopener">${socLbl(v)}</a>`).join(' · ')}</div>`:''}<div class="r"></div><div class="nt">${esc(c.notes)}</div>`:`<div class="nm">${t('noCards')}</div><div class="r">${t('noCardsHint')}</div>`;
-  {const el=$('card');$('stack').style.touchAction=el.scrollHeight>el.clientHeight+2?'pan-y':'none'}
+  {const el=$('card');$('stack').classList.toggle('sc',el.scrollHeight>el.clientHeight+2)}
 }
 async function go(i,dir=1){
   if(busy||!V.length)return;const n=V.length;i=(i+n)%n;
@@ -421,12 +422,16 @@ let wt=0;$('stack').addEventListener('wheel',e=>{const el=$('card');if(el.scroll
 async function fling(dir,n){const len=V.length;if(busy||len<2)return;if(n<=1)return go(idx+dir,dir);
   busy=true;for(let k=0;k<n-1;k++){idx=((idx+dir)%len+len)%len;paint();bamboo(.6);await new Promise(r=>setTimeout(r,40))}busy=false;go(idx+dir,dir)}
 (()=>{const st_=$('stack');let pts=null,pid=null;
-  st_.addEventListener('pointerdown',e=>{if(e.button||e.target.closest('.pull,.cqr,a'))return;pid=e.pointerId;pts=[{t:performance.now(),x:e.clientX,y:e.clientY}];try{st_.setPointerCapture(pid)}catch(_){}});
-  st_.addEventListener('pointermove',e=>{if(!pts||e.pointerId!==pid)return;pts.push({t:performance.now(),x:e.clientX,y:e.clientY});if(pts.length>40)pts.shift()});
+  let cap=false,swiped=0;
+  st_.addEventListener('dragstart',e=>e.preventDefault());
+  st_.addEventListener('click',e=>{if(performance.now()-swiped<400){e.preventDefault();e.stopPropagation()}},true);
+  st_.addEventListener('pointerdown',e=>{if(e.button||e.target.closest('.pull,.cqr'))return;pid=e.pointerId;cap=false;pts=[{t:performance.now(),x:e.clientX,y:e.clientY}]});
+  st_.addEventListener('pointermove',e=>{if(!pts||e.pointerId!==pid)return;pts.push({t:performance.now(),x:e.clientX,y:e.clientY});if(pts.length>40)pts.shift();
+    if(!cap&&Math.hypot(e.clientX-pts[0].x,e.clientY-pts[0].y)>10){cap=true;try{st_.setPointerCapture(pid)}catch(_){}}});
   const end=e=>{if(window.__lp&&e.pointerId===pid){window.__lp=false;pts=null;return}if(!pts||e.pointerId!==pid)return;const P=pts;pts=null;if(e.type==='pointercancel')return;
     const now=performance.now(),f=P[0],l=P[P.length-1],dx=l.x-f.x,dy=l.y-f.y,vert=Math.abs(dy)>=Math.abs(dx),d=vert?dy:dx;
     const r=P.find(q=>q.t>=now-120)||l,dt=Math.max(l.t-r.t,16),dr=vert?l.y-r.y:l.x-r.x,v=Math.abs(dr)/dt;
-    if(Math.abs(d)<(v>=.3?24:40))return;
+    if(Math.abs(d)<(v>=.3?24:40))return;swiped=performance.now();
     const dir=d<0?1:-1,n=Math.min(30,Math.max(1,Math.round(v*3.5)));fling(dir,n)};
   st_.addEventListener('pointerup',end);st_.addEventListener('pointercancel',end)})();
 document.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)||document.querySelector('dialog[open]'))return;
