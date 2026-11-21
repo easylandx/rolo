@@ -68,6 +68,41 @@ label.f{display:block;font-size:12px;letter-spacing:.04em;margin:9px 0 3px}
 #dk .hint{margin:4px 0}.bkl{display:grid;gap:10px;margin-top:12px}.bkl .b{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left}.bkl small{font:400 12px 'Courier Prime',monospace;opacity:.75}
 #dh{width:min(520px,calc(100vw - 32px));max-height:86vh;overflow:auto}#dh h3{font:700 14px 'Courier Prime',monospace;margin:14px 0 4px}#dh ol{padding-left:20px;font-size:13px;line-height:1.5}#dh li{margin:4px 0}
 #dh pre.code{margin:6px 0 8px;padding:10px 12px;background:#2b2418;color:#fbf0c4;border-radius:10px;font:12px/1.45 'Courier Prime',monospace;max-height:200px;overflow:auto;white-space:pre}#dh .cp{font-size:12px;padding:6px 12px}
+#dh .hi{font-size:14px;line-height:1.55;margin:4px 0 10px}
+#dh details.hs{border:2px solid #e3c36a;border-radius:12px;margin:8px 0;background:#fff7dc}
+#dh details.hs[open]{padding-bottom:10px}
+#dh details.hs>summary{cursor:pointer;font:700 14px 'Courier Prime',monospace;padding:10px 12px;list-style:none}
+#dh details.hs>summary::-webkit-details-marker{display:none}
+#dh details.hs>summary::before{content:"+ "}
+#dh details.hs[open]>summary::before{content:"\2013  "}
+#dh details.hs>summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:10px}
+#dh details.hs>*:not(summary){margin-left:12px;margin-right:12px}
+#dh ul.hl{padding-left:20px;font-size:13px;line-height:1.5}
+#dh ul.hl li{margin:7px 0}
+#dh .tp{display:block;margin-top:2px;font-style:italic;color:#7a5200}
+#dh .hg{font:700 13px 'Courier Prime',monospace;margin:10px 12px 0}
+
+#dh{width:min(560px,calc(100vw - 32px))}
+#dh .tabs{display:flex;gap:6px;position:sticky;top:-1px;background:var(--paper,#fffaf0);padding:6px 0 8px;z-index:2;border-bottom:2px dashed #e3c36a;margin-bottom:10px}
+#dh .tabs button{flex:1;font:700 13px 'Courier Prime',monospace;padding:9px 6px;border:2px solid #e3c36a;border-radius:10px 10px 0 0;background:#fff7dc;color:var(--ink);cursor:pointer}
+#dh .tabs button[aria-selected=true]{background:#f3c53a;box-shadow:0 3px 0 #d9b247}
+#dh .pg[hidden]{display:none}
+#dh .hero{background:#2b2418;color:#fbf0c4;border-radius:14px;padding:16px;font-size:14px;line-height:1.55;margin-bottom:12px}
+#dh .hero b{display:block;font:400 20px 'Special Elite',serif;margin-bottom:6px;color:#f3c53a}
+#dh .why{display:grid;gap:8px;margin:8px 0 14px}
+#dh .why div{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.5}
+#dh .why i{flex:none;width:24px;height:24px;border-radius:50%;background:#f3c53a;display:grid;place-items:center;font:700 13px 'Courier Prime',monospace;font-style:normal}
+#dh .plat{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+#dh .plat div{border:2px solid #e3c36a;border-left-width:8px;border-radius:10px;background:#fff7dc;padding:8px 10px;font-size:12.5px;line-height:1.45}
+#dh .plat b{display:block;font:700 13px 'Courier Prime',monospace;margin-bottom:2px}
+#dh h4{font:400 17px 'Special Elite',serif;margin:18px 0 8px;padding-bottom:4px;border-bottom:2px solid #e3c36a}
+#dh .bc{display:grid;grid-template-columns:132px 1fr;gap:10px;align-items:start;padding:10px 0;border-bottom:1px dotted #d9b247}
+#dh .bn{display:inline-block;justify-self:start;font:700 12px 'Courier Prime',monospace;padding:7px 10px;border:2px solid #d9b247;border-radius:9px;background:#fff;box-shadow:0 3px 0 #d9b247;text-align:center;line-height:1.25}
+#dh .bt{font-size:13px;line-height:1.5}
+#dh .bt em{display:block;margin-top:5px;font-style:normal;font-size:12.5px;background:#fff1a8;border-radius:8px;padding:5px 8px;color:#5c4000}
+#dh .bt em::before{content:"\1F4A1  "}
+@media (max-width:440px){#dh .bc{grid-template-columns:1fr}#dh .plat{grid-template-columns:1fr}}
+#tip{position:fixed;inset:auto;margin:0;border:2px solid #d9b247;background:#2b2418;color:#fbf0c4;padding:7px 10px;border-radius:9px;font:12.5px/1.4 'Courier Prime',monospace;max-width:min(260px,calc(100vw - 16px));pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,.25)}
 #toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:#fff7c9;border:2px solid #d9b247;padding:10px 16px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:99;max-width:calc(100vw - 32px);font-size:14px}
 #toast.s{opacity:1;transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -294,6 +329,130 @@ Object.assign(I18N.en,{fltAria:'Show only cards that have',fltWa:'WhatsApp',fltS
 Object.assign(I18N.es,{fltAria:'Mostrar solo fichas que tengan',fltWa:'WhatsApp',fltSoc:'Redes',fltEm:'Correo',fSocial:'Redes',fFb:'URL de Facebook',fWork:'Empresa / Cargo',sqLbl:'Buscar este nombre en:',sPh:'Un enlace por línea',sNeedName:'Escribe primero un email o nombre',social:'Redes',scan:'Escanear tarjeta',scanTitle:'Escanear una tarjeta de visita',scanHint:'Encuadra la tarjeta. Si tiene un código QR de contacto, se lee solo.',scanQrLink:'Enlace QR encontrado. Ahora captura la tarjeta impresa.',scanQrDone:l=>`Contacto QR leído. Idioma: ${l}. Revisa los datos y guarda.`,scanCapture:'Capturar',scanPhoto:'Usar una foto',scanReading:'Leyendo la tarjeta…',scanLoad:'Cargando el lector (solo la primera vez)…',scanNoCam:'No se pudo usar la cámara. Elige una foto.',scanFail:'No se pudo leer texto. Prueba de nuevo con más luz.',scanDone:l=>`Tarjeta leída. Idioma: ${l}. Revisa los datos y guarda.`,cardLang:'Idioma de la tarjeta',langNone:'Sin definir',scanErr:'No se pudo cargar el lector. Revisa tu conexión e inténtalo de nuevo.',fTitle:'Cargo'});Object.assign(I18N.en,{qr:'QR code',qrTitle:'Share this card',qrHint:'Scan with any phone camera to save this contact.',qrWa:'Send as vCard on WhatsApp',qrWaS:'Opens the share sheet and sends the contact file',qrSave:'Save contact file (.vcf)',qrSaveS:'Opens in your phone, Google, iCloud and Outlook contacts',qrWaFallback:'Contact file saved. In WhatsApp, attach it as a Document. The details are also in the message.',qrFail:'This card has too much data for a QR code. Use the .vcf file instead.'});Object.assign(I18N.es,{qr:'Código QR',qrTitle:'Comparte esta ficha',qrHint:'Escanéalo con la cámara de cualquier móvil para guardar este contacto.',qrWa:'Enviar como vCard por WhatsApp',qrWaS:'Abre el menú de compartir y envía el archivo de contacto',qrSave:'Guardar archivo de contacto (.vcf)',qrSaveS:'Se abre en los contactos de tu móvil, Google, iCloud y Outlook',qrWaFallback:'Archivo de contacto guardado. En WhatsApp, adjúntalo como Documento. Los datos también van en el mensaje.',qrFail:'Esta ficha tiene demasiados datos para un código QR. Usa el archivo .vcf.'});Object.assign(I18N.en,{invBtn:'Invite',invMsg:'Using RoloPro. Try it here:'});Object.assign(I18N.es,{invBtn:'Invitar',invMsg:'Uso RoloPro. Pruébalo aquí:'});Object.assign(I18N.en,{fLi:'LinkedIn URL',deskNoMatch:'No cards match those filters'});Object.assign(I18N.es,{deskNoMatch:'Ninguna ficha coincide con esos filtros'});Object.assign(I18N.es,{fLi:'URL de LinkedIn'});Object.assign(I18N.en,{desk:'Desk',onDesk:n=>`${n} on desk`,deskBack:'‹ Back to Rolodex',deskPull:'Pull a card',deskClear:'Clear desk',deskLater:'Later',deskArchive:'Archive',deskPin:'Pin card',deskUnpin:'Unpin card',deskReturn:'Remove from desk',deskHint:'Drag and flick cards. Tap a card to open it. Throw them into a tray.',deskEmpty:'Tap Pull a card to bring one onto the desk.',deskNoCards:'No cards left in the rolodex',deskPinned:'Pinned. Tap the pin button to unpin.'});Object.assign(I18N.es,{desk:'Escritorio',onDesk:n=>`${n} en el escritorio`,deskBack:'‹ Volver al Rolodex',deskPull:'Sacar una ficha',deskClear:'Vaciar escritorio',deskLater:'Más tarde',deskArchive:'Archivo',deskPin:'Fijar ficha',deskUnpin:'Soltar ficha',deskReturn:'Quitar del escritorio',deskHint:'Arrastra y lanza las fichas. Toca una ficha para abrirla. Lánzalas a una bandeja.',deskEmpty:'Pulsa Sacar una ficha para traer una al escritorio.',deskNoCards:'No quedan fichas en el rolodex',deskPinned:'Fijada. Usa el botón de la chincheta para soltarla.'});Object.assign(I18N.en,{reels:'Reels',reelsTitle:'Reels: vintage office films',reelsClose:'Close',reelsTapSound:'Tap video for sound',reelsTapMute:'Tap to mute',reelsSwipe:'Swipe up for next',reelsUnavail:'Video unavailable right now',reelsPrev:'Previous video',reelsNext:'Next video',reelsFwd:'Forward 10 seconds',reelsRew:'Rewind 10 seconds',reelsList:'Choose a video',reelsAutoOff:'▶ Autoplay: off',reelsAutoOn:'⏭ Autoplay: on'});Object.assign(I18N.es,{reels:'Reels',reelsTitle:'Reels: películas de oficina clásicas',reelsClose:'Cerrar',reelsTapSound:'Toca el vídeo para activar el sonido',reelsTapMute:'Toca para silenciar',reelsSwipe:'Desliza hacia arriba para el siguiente',reelsUnavail:'Vídeo no disponible ahora mismo',reelsPrev:'Vídeo anterior',reelsNext:'Vídeo siguiente',reelsFwd:'Adelantar 10 segundos',reelsRew:'Retroceder 10 segundos',reelsList:'Elegir un vídeo',reelsAutoOff:'▶ Autoplay: no',reelsAutoOn:'⏭ Autoplay: sí'});
 Object.assign(I18N.en,{pwaInstall:'Install app',pwaIos:'To install: tap Share, then “Add to Home Screen”.'});
 Object.assign(I18N.es,{pwaInstall:'Instalar app',pwaIos:'Para instalar: pulsa Compartir y luego «Añadir a pantalla de inicio».'});
+Object.assign(I18N.en,{tips:{lang:'Change the language: Spanish or English.',search:'Type a name, company or number to find a card fast.',filter:'Show or hide the filter buttons (WhatsApp, LinkedIn, Facebook, Instagram, Email).',chip:'Show only people who have this one. Tap again to turn it off.',key:'Jump to the first person starting with this letter.',prev:'Go back one card.',next:'Go to the next card.',pull:'Pull the tab to flip to the next card.',cqr:'Show a QR code so a friend can save this contact.',call:'Call this person.',wa:'Write a WhatsApp message to this person.',mail:'Write an email to this person.',add:'Create a new card.',scan:'Scan a paper business card with your camera.',edit:'Change this card, add links and notes.',addc:'Save this person in your phone contacts.',qr:'Show a QR code for this card.',desk:'Open the desk to move cards around.',del:'Delete only this card (it asks first).',delall:'Delete ALL cards (it asks first). Make a backup before.',pick:'Choose contacts from your phone (Chrome on Android).',rnd:'Jump to a random card.',auto:'Flip cards by themselves. Tap again to stop.',snd:'Turn the click sounds on or off.',bk:'Save all your cards in a file as a safety copy.',help:'Open this guide.',reels:'Watch short old office films for a coffee break.',inv:'Invite a friend to try RoloPro by WhatsApp.',dz:'Drop a .vcf, .csv or .json file here, or tap to choose one.',cc:'The country number added to phones without one (34 = Spain).',pwa:'Install RoloPro on your home screen like an app.',net:'Search this person on this network. Then paste the link you find.',cancel:'Close without saving.',save:'Save this card.',msgchip:'Fill the message with one tap.',openwa:'Open WhatsApp with this message ready.',cap:'Take a photo of the card with the camera.',photo:'Read a card from a photo in your gallery.',qrwa:'Send this contact as a vCard on WhatsApp.',qrsave:'Save the contact file (.vcf).',json:'Best copy: restores everything.',vcf:'For phone and Google contacts.',csv:'For Excel or Google Sheets.',close:'Close this window.',back:'Leave the desk and go back to the card index.',dpull:'Bring one random card onto the desk.',dclear:'Send all desk cards back to the Rolodex.',dpin:'Pin or unpin this card so it stays still.',dret:'Send this card back to the Rolodex.',reelx:'Close the videos.'},
+helpTitle:'Help and guide',helpTip:'Tip:',
+helpWhat:'RoloPro is your pocket address book, shaped like a classic desk Rolodex. Every person is a card. Flip through the cards from A to Z, find someone, and talk to them in one tap on the app you already use.',
+helpWhyT:'Why is it useful?',
+helpWhy:['A normal contact list is just names and numbers. A RoloPro card keeps every way to reach a person together: phone, WhatsApp, email, LinkedIn, Facebook and Instagram.','You do not jump between apps hunting for someone. Open the card, tap the button, and you are in the right chat, call or inbox.','It is great for small businesses, freelancers and anyone who sells, networks or keeps in touch with many people.','No account and no sign-up. Your cards are saved only in this browser on your device. Use Backup now and then to keep a safe copy.'],
+helpPlatT:'Works with the apps you already use',
+helpPlat:[['WhatsApp.','Tap the green WHATSAPP button. Pick a ready-made message or write your own, then WhatsApp opens the chat with that person.'],['Email.','Tap the orange envelope. Your mail app (or Gmail on a computer) opens with their address already filled in.'],['Phone.','Tap the blue phone button to call the person right away.'],['LinkedIn, Facebook and Instagram.','Save each profile link on the card. Later, one tap on the link opens the profile. In Edit, the small network icons help you find the profile on Google.'],['Import your old contacts.','Bring people in from Gmail, Outlook, LinkedIn or Facebook (see Import your contacts below). The Filter button then shows only people who have WhatsApp, LinkedIn, Facebook, Instagram or email.']],
+helpTabs:['Start here','Buttons','Import your contacts'],helpBtnT:'What every button does',
+helpBtn:[
+['Top of the page',[
+['ES / EN','Changes the language of the whole app.','Pick your language once and it is remembered.'],
+['Search box','Type a name, company, phone number or any word on the card. The list narrows as you type.','The small number next to it shows where you are, for example 3 / 40.'],
+['Funnel (Filter)','Shows extra buttons: WhatsApp, LinkedIn, Facebook, Instagram, Email. Turn one on to see only people who have it.','Turn on WhatsApp, then flip through: everyone you see can be messaged right now.']]],
+['The card index',[
+['Letters A to Z','Jump straight to the first person whose name starts with that letter.','Gold letter = where you are now. Grey letters have nobody yet.'],
+['‹ and ›','Go to the previous or next card.','Hold the button down and the cards fly past fast.'],
+['Black tab under the card','Flips to the next card, like pulling a real Rolodex.','You can also swipe or flick the card, or use the arrow keys on a computer.'],
+['QR icon on the card','Opens a QR code for that person.','Show it to a friend: their phone camera saves the contact in seconds.'],
+['Links on the card','Phone, WhatsApp, email and social links on the card are tappable.','Tap a phone to call, tap an email to write, tap a social name to open the profile.']]],
+['Under the card',[
+['Blue phone','Calls the person.','If the call does not start, check the Default country code at the bottom of the page.'],
+['WHATSAPP (green)','Opens a small window to write a message, then opens WhatsApp. A RoloPro picture and link are added.','Tap one of the quick messages (Hi, Thanks, Happy birthday) to save typing.'],
+['Orange envelope','Writes an email to the person.','If the card has no email you will see a message. Add one with Edit.']]],
+['Tool buttons',[
+['Add card','Creates a new person card.','Only the name is required. Fill in what you know and add more later.'],
+['Scan card','Opens your camera to read a paper business card and fill in the card for you.','A QR contact code is read at once. Otherwise it reads the printed text. Use good light and always check before saving.'],
+['Edit','Changes the card you are looking at.','Paste Facebook, LinkedIn or Instagram links here so the buttons on the card work.'],
+['Add to contacts','Downloads a contact file (.vcf) for this person.','Open the file on your phone and tap Save to put the person in your phone contacts.'],
+['QR code','Shows a QR code for this card and lets you send it as a vCard on WhatsApp or save the file.','Perfect at events: let people scan you and you scan them.'],
+['Desk','Opens a wooden desk where you pull cards out and move them around.','Great for planning who to contact today. See Desk buttons below.'],
+['Delete','Deletes only the card you are looking at, after asking you to confirm.','Make a Backup first if you are unsure.'],
+['Delete all','Deletes every card, after asking you to confirm. It cannot be undone.','Use Backup before this. Only use it to start from zero.'],
+['Pick from phone','Chooses contacts straight from your phone.','Only works in Chrome on Android. On other phones use the import box.'],
+['Random','Jumps to a random card.','A nice way to remember to call someone you forgot.'],
+['Auto','Flips cards by itself, one after another. Tap again (Pause) to stop.','Fun to see all your contacts roll by. Tapping Pause stops it.'],
+['Sound on / Sound off','Turns the soft bamboo click sounds on or off.','Turn it off in meetings or quiet places.'],
+['Backup','Saves all your cards to a file: .json (best to restore), .vcf (phone and Google contacts) or .csv (Excel).','Do it once a week. To restore, drop the .json file into the import box.'],
+['Help','Opens this guide.','Tap the + titles to open each section.'],
+['Reels','Opens short old public-domain office films and vintage ads, to swipe through.','A fun coffee break. Tap the video for sound, swipe up for the next one.'],
+['Invite','Sends a WhatsApp invitation so a friend can try RoloPro.','The more of your team uses it, the easier it is to share contacts.']]],
+['Import and settings',[
+['Import box (dashed)','Drop a .vcf, .csv or .json file here, or tap it to choose one.','New people are added. People already there are updated, not copied twice.'],
+['Default country code','The country number added to phones without one, for example 34 for Spain or 1 for USA.','Set it once. Then calls and WhatsApp work even if numbers were saved without the plus sign.'],
+['Install app','Puts RoloPro on your home screen like a normal app. Only shows when your browser allows it.','On iPhone, tap Share, then Add to Home Screen.']]],
+['Inside the windows',[
+['Edit form: social icons','The small Facebook, LinkedIn and Instagram icons search the person on Google.','Fill the name (and email if you have it) first. Then copy the link you find into the box.'],
+['Edit form: Save card / Cancel','Save keeps your changes. Cancel closes without saving.','Phone numbers separated by a | or comma are split for you automatically.'],
+['Message window: quick messages','Fills the message with one tap.','You can still edit the text before opening WhatsApp.'],
+['Message window: Open WhatsApp','Opens the chat with the message ready. You press Send in WhatsApp.','On a computer the image is copied. Press Ctrl+V in the chat to paste it.'],
+['Scan window: Capture / Use a photo','Capture takes a picture with the camera. Use a photo reads a picture from your gallery.','Fill the dashed frame with the card, keep it flat and still.'],
+['Backup window','Three buttons: JSON, VCF and CSV, each with a short explanation.','Not sure which? Pick the JSON file. It keeps everything.'],
+['QR window','Send as vCard on WhatsApp, or Save contact file (.vcf).','Close it with the Close button when done.']]],
+['Desk buttons',[
+['Back to Rolodex','Leaves the desk and returns to the card index.','Your desk is saved. It will be there next time.'],
+['Filter buttons (top)','WhatsApp, LinkedIn, Facebook, Instagram, Email. They choose which people Pull a card can bring.','Turn on LinkedIn, then pull: you only get people with LinkedIn.'],
+['Pull a card','Brings one random card onto the desk. It is a copy, your Rolodex keeps the original.','Pull several cards to build today list.'],
+['Clear desk','Sends every card on the desk back to the Rolodex.','It only removes copies. No contact is deleted.'],
+['Pin button on a card','Nails the card in place so it cannot move. Tap again to unpin.','Pin the most important people.'],
+['Return arrow on a card','Sends that one card back to the Rolodex.','Tap a card (not a button) to open it in the Rolodex.'],
+['Later and Archive trays','Drag and throw a card into a tray at the bottom to sort it.','Later = call soon. Archive = done.']]]
+],
+helpImpT:'Import your contacts'});
+Object.assign(I18N.es,{tips:{lang:'Cambia el idioma: español o inglés.',search:'Escribe un nombre, empresa o número para encontrar una ficha rápido.',filter:'Muestra u oculta los botones de filtro (WhatsApp, LinkedIn, Facebook, Instagram, Correo).',chip:'Muestra solo a quien tiene esto. Púlsalo otra vez para quitarlo.',key:'Salta a la primera persona que empieza por esta letra.',prev:'Vuelve una ficha atrás.',next:'Pasa a la siguiente ficha.',pull:'Tira de la pestaña para pasar a la siguiente ficha.',cqr:'Muestra un código QR para que un amigo guarde este contacto.',call:'Llama a esta persona.',wa:'Escribe un mensaje de WhatsApp a esta persona.',mail:'Escribe un correo a esta persona.',add:'Crea una ficha nueva.',scan:'Escanea una tarjeta de papel con la cámara.',edit:'Cambia esta ficha, añade enlaces y notas.',addc:'Guarda a esta persona en los contactos del móvil.',qr:'Muestra un código QR de esta ficha.',desk:'Abre el escritorio para mover fichas.',del:'Borra solo esta ficha (antes pregunta).',delall:'Borra TODAS las fichas (antes pregunta). Haz copia antes.',pick:'Elige contactos de tu móvil (Chrome en Android).',rnd:'Salta a una ficha al azar.',auto:'Pasa las fichas solo. Púlsalo otra vez para parar.',snd:'Activa o desactiva los sonidos de clic.',bk:'Guarda todas tus fichas en un archivo como copia de seguridad.',help:'Abre esta guía.',reels:'Mira cortos antiguos de oficina para descansar.',inv:'Invita a un amigo a probar RoloPro por WhatsApp.',dz:'Suelta aquí un archivo .vcf, .csv o .json, o púlsalo para elegirlo.',cc:'El prefijo del país que se añade a los teléfonos sin él (34 = España).',pwa:'Instala RoloPro en tu pantalla de inicio como una app.',net:'Busca a esta persona en esta red. Luego pega el enlace que encuentres.',cancel:'Cierra sin guardar.',save:'Guarda esta ficha.',msgchip:'Rellena el mensaje con un toque.',openwa:'Abre WhatsApp con este mensaje listo.',cap:'Haz una foto de la tarjeta con la cámara.',photo:'Lee una tarjeta desde una foto de tu galería.',qrwa:'Envía este contacto como vCard por WhatsApp.',qrsave:'Guarda el archivo de contacto (.vcf).',json:'La mejor copia: restaura todo.',vcf:'Para contactos del móvil y de Google.',csv:'Para Excel o Google Sheets.',close:'Cierra esta ventana.',back:'Sal del escritorio y vuelve al fichero.',dpull:'Trae una ficha al azar al escritorio.',dclear:'Devuelve todas las fichas del escritorio al Rolodex.',dpin:'Fija o suelta esta ficha para que no se mueva.',dret:'Devuelve esta ficha al Rolodex.',reelx:'Cierra los vídeos.'},
+helpTitle:'Ayuda y guía',helpTip:'Consejo:',
+helpWhat:'RoloPro es tu agenda de bolsillo con forma de clásico fichero Rolodex de escritorio. Cada persona es una ficha. Pasa las fichas de la A a la Z, encuentra a alguien y habla con esa persona con un solo toque en la app que ya usas.',
+helpWhyT:'¿Por qué es útil?',
+helpWhy:['Una lista de contactos normal son solo nombres y números. Una ficha de RoloPro guarda juntas todas las formas de llegar a una persona: teléfono, WhatsApp, correo, LinkedIn, Facebook e Instagram.','No saltas de una app a otra buscando a alguien. Abres la ficha, pulsas el botón y estás en el chat, la llamada o el correo correcto.','Es ideal para pequeños negocios, autónomos y cualquiera que venda, haga networking o mantenga contacto con mucha gente.','Sin cuenta ni registro. Tus fichas se guardan solo en este navegador de tu dispositivo. Usa Copia de seguridad de vez en cuando para tener una copia segura.'],
+helpPlatT:'Funciona con las apps que ya usas',
+helpPlat:[['WhatsApp.','Pulsa el botón verde WHATSAPP. Elige un mensaje hecho o escribe el tuyo, y WhatsApp abre el chat con esa persona.'],['Correo.','Pulsa el sobre naranja. Se abre tu app de correo (o Gmail en el ordenador) con su dirección ya puesta.'],['Teléfono.','Pulsa el botón azul del teléfono para llamar a la persona al momento.'],['LinkedIn, Facebook e Instagram.','Guarda el enlace de cada perfil en la ficha. Después, un toque en el enlace abre el perfil. En Editar, los iconos pequeños de cada red te ayudan a encontrar el perfil en Google.'],['Importa tus contactos antiguos.','Trae gente desde Gmail, Outlook, LinkedIn o Facebook (mira Importa tus contactos más abajo). El botón Filtro muestra solo a quien tiene WhatsApp, LinkedIn, Facebook, Instagram o correo.']],
+helpTabs:['Empieza aquí','Botones','Importar contactos'],helpBtnT:'Qué hace cada botón',
+helpBtn:[
+['Parte de arriba',[
+['ES / EN','Cambia el idioma de toda la app.','Elige tu idioma una vez y se recuerda.'],
+['Caja de búsqueda','Escribe un nombre, empresa, teléfono o cualquier palabra de la ficha. La lista se reduce mientras escribes.','El numerito de al lado te dice dónde estás, por ejemplo 3 / 40.'],
+['Embudo (Filtro)','Muestra botones extra: WhatsApp, LinkedIn, Facebook, Instagram, Correo. Activa uno para ver solo a quien lo tiene.','Activa WhatsApp y pasa las fichas: a todas las que veas puedes escribirles ahora mismo.']]],
+['El fichero',[
+['Letras A a Z','Salta directo a la primera persona cuyo nombre empieza por esa letra.','Letra dorada = donde estás. Letras grises = todavía no hay nadie.'],
+['‹ y ›','Van a la ficha anterior o a la siguiente.','Mantén pulsado y las fichas pasan muy rápido.'],
+['Pestaña negra bajo la ficha','Pasa a la siguiente ficha, como en un Rolodex de verdad.','También puedes deslizar o lanzar la ficha, o usar las flechas del teclado en el ordenador.'],
+['Icono QR de la ficha','Abre un código QR de esa persona.','Enséñaselo a un amigo: con la cámara de su móvil guarda el contacto en segundos.'],
+['Enlaces de la ficha','El teléfono, WhatsApp, correo y redes de la ficha se pueden tocar.','Toca un teléfono para llamar, un correo para escribir, el nombre de una red para abrir el perfil.']]],
+['Bajo la ficha',[
+['Teléfono azul','Llama a la persona.','Si la llamada no empieza, revisa el Prefijo de país por defecto al final de la página.'],
+['WHATSAPP (verde)','Abre una ventana para escribir un mensaje y luego abre WhatsApp. Se añaden una imagen y un enlace de RoloPro.','Toca uno de los mensajes rápidos (Hola, Gracias, Feliz cumpleaños) para escribir menos.'],
+['Sobre naranja','Escribe un correo a la persona.','Si la ficha no tiene correo verás un aviso. Añádelo con Editar.']]],
+['Botones de herramientas',[
+['Añadir ficha','Crea una nueva ficha de persona.','Solo el nombre es obligatorio. Rellena lo que sepas y completa más tarde.'],
+['Escanear tarjeta','Abre la cámara para leer una tarjeta de visita en papel y rellenar la ficha por ti.','Un código QR de contacto se lee al instante. Si no, lee el texto impreso. Usa buena luz y revisa siempre antes de guardar.'],
+['Editar','Cambia la ficha que estás viendo.','Pega aquí los enlaces de Facebook, LinkedIn o Instagram para que funcionen los botones de la ficha.'],
+['Añadir a contactos','Descarga un archivo de contacto (.vcf) de esta persona.','Abre el archivo en tu móvil y pulsa Guardar para ponerla en los contactos del teléfono.'],
+['Código QR','Muestra un código QR de esta ficha y te deja enviarla como vCard por WhatsApp o guardar el archivo.','Perfecto en eventos: que te escaneen y escanea tú.'],
+['Escritorio','Abre un escritorio de madera donde sacas fichas y las mueves.','Genial para planear a quién contactar hoy. Mira Botones del escritorio más abajo.'],
+['Eliminar','Elimina solo la ficha que ves, tras pedirte confirmación.','Haz antes una Copia de seguridad si tienes dudas.'],
+['Eliminar todas','Elimina todas las fichas, tras pedirte confirmación. No se puede deshacer.','Haz antes una Copia de seguridad. Úsalo solo para empezar de cero.'],
+['Elegir del móvil','Elige contactos directamente de tu teléfono.','Solo funciona en Chrome para Android. En otros móviles usa el recuadro de importar.'],
+['Random','Salta a una ficha al azar.','Una forma simple de acordarte de llamar a alguien olvidado.'],
+['Auto','Pasa las fichas solo, una tras otra. Púlsalo otra vez (Pausar) para parar.','Divertido para ver pasar todos tus contactos. Pausar lo detiene.'],
+['Sonido activado / desactivado','Activa o desactiva los suaves sonidos de bambú.','Desactívalo en reuniones o sitios silenciosos.'],
+['Copia de seguridad','Guarda todas tus fichas en un archivo: .json (el mejor para restaurar), .vcf (contactos del móvil y Google) o .csv (Excel).','Hazlo una vez por semana. Para restaurar, suelta el archivo .json en el recuadro de importar.'],
+['Ayuda','Abre esta guía.','Toca los títulos con + para abrir cada sección.'],
+['Reels','Abre cortos de películas de oficina antiguas de dominio público y anuncios vintage, para ir deslizando.','Un descanso divertido. Toca el vídeo para el sonido, desliza hacia arriba para el siguiente.'],
+['Invitar','Envía una invitación por WhatsApp para que un amigo pruebe RoloPro.','Cuanta más gente de tu equipo lo use, más fácil es compartir contactos.']]],
+['Importar y ajustes',[
+['Recuadro de importar (líneas discontinuas)','Suelta aquí un archivo .vcf, .csv o .json, o tócalo para elegirlo.','Las personas nuevas se añaden. Las que ya están se actualizan, no se duplican.'],
+['Prefijo de país por defecto','El número de país que se añade a los teléfonos que no lo tienen, por ejemplo 34 para España o 1 para EE. UU.','Ponlo una vez. Así las llamadas y WhatsApp funcionan aunque guardaras los números sin el signo más.'],
+['Instalar app','Pone RoloPro en tu pantalla de inicio como una app normal. Solo sale cuando tu navegador lo permite.','En iPhone, pulsa Compartir y luego Añadir a pantalla de inicio.']]],
+['Dentro de las ventanas',[
+['Formulario de edición: iconos de redes','Los iconos pequeños de Facebook, LinkedIn e Instagram buscan a la persona en Google.','Rellena antes el nombre (y el correo si lo tienes). Luego copia el enlace que encuentres en la caja.'],
+['Formulario de edición: Guardar ficha / Cancelar','Guardar conserva tus cambios. Cancelar cierra sin guardar.','Los teléfonos separados por | o coma se dividen solos.'],
+['Ventana de mensaje: mensajes rápidos','Rellenan el mensaje con un toque.','Aún puedes editar el texto antes de abrir WhatsApp.'],
+['Ventana de mensaje: Abrir WhatsApp','Abre el chat con el mensaje listo. Tú pulsas Enviar en WhatsApp.','En ordenador se copia la imagen. Pulsa Ctrl+V en el chat para pegarla.'],
+['Ventana de escaneo: Capturar / Usar una foto','Capturar hace una foto con la cámara. Usar una foto lee una imagen de tu galería.','Llena el marco de líneas con la tarjeta, plana y quieta.'],
+['Ventana de copia de seguridad','Tres botones: JSON, VCF y CSV, cada uno con una breve explicación.','¿No sabes cuál? Elige el JSON. Guarda todo.'],
+['Ventana de QR','Enviar como vCard por WhatsApp, o Guardar archivo de contacto (.vcf).','Ciérrala con el botón Cerrar al terminar.']]],
+['Botones del escritorio',[
+['Volver al Rolodex','Sale del escritorio y vuelve al fichero.','Tu escritorio se guarda. Estará igual la próxima vez.'],
+['Botones de filtro (arriba)','WhatsApp, LinkedIn, Facebook, Instagram, Correo. Eligen qué personas puede traer Sacar una ficha.','Activa LinkedIn y saca: solo te salen personas con LinkedIn.'],
+['Sacar una ficha','Trae una ficha al azar al escritorio. Es una copia, tu Rolodex conserva la original.','Saca varias fichas para armar tu lista de hoy.'],
+['Vaciar escritorio','Devuelve todas las fichas del escritorio al Rolodex.','Solo quita copias. No se elimina ningún contacto.'],
+['Botón de chincheta en una ficha','Clava la ficha para que no se mueva. Púlsalo otra vez para soltarla.','Fija a las personas más importantes.'],
+['Flecha de volver en una ficha','Devuelve esa ficha al Rolodex.','Toca una ficha (no un botón) para abrirla en el Rolodex.'],
+['Bandejas Más tarde y Archivo','Arrastra y lanza una ficha a una bandeja de abajo para ordenarla.','Más tarde = llamar pronto. Archivo = hecho.']]]
+],
+helpImpT:'Importa tus contactos'});
 let lang=st.get('rc.lang',/^es/i.test(navigator.language||'')?'es':'en');if(!I18N[lang])lang='en';
 const t=(k,...a)=>{const v=I18N[lang][k]??I18N.en[k];return typeof v==='function'?v(...a):v};
 const catName=c=>I18N[lang]['cat_'+c]||c;
@@ -690,7 +849,37 @@ $('bkX').onclick=()=>$('dk').close();
 $('bkJ').onclick=()=>{if(!all.length)return toast(t('noneToSave'));dl('rolopro-backup-'+today()+'.json','application/json',JSON.stringify({app:'RoloPro',version:1,date:new Date().toISOString(),cards:all},null,1));toast(t('saved'))};
 $('bkV').onclick=()=>{if(!all.length)return toast(t('noneToSave'));dl('rolopro-contacts-'+today()+'.vcf','text/vcard;charset=utf-8',toVCF());toast(t('saved'))};
 $('bkC').onclick=()=>{if(!all.length)return toast(t('noneToSave'));dl('rolopro-contacts-'+today()+'.csv','text/csv;charset=utf-8',toCSV());toast(t('saved'))};
-function buildHelp(){$('hb').innerHTML=t('helpData').map(([h,l,c])=>`<h3>${esc(h)}</h3><ol>${l.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>`+(c?`<pre class="code" tabindex="0"><code>${esc($(c).textContent.trim())}</code></pre><button type="button" class="b cp" data-code="${c}">${esc(t('copyCode'))}</button>`:'')).join('')}
+function buildHelp(){
+  const E=esc,tb=t('helpTabs');
+  let a=`<div class="hero"><b>RoloPro</b>${E(t('helpWhat'))}</div><h4>${E(t('helpWhyT'))}</h4><div class="why">${t('helpWhy').map((x,i)=>`<div><i>${i+1}</i><span>${E(x)}</span></div>`).join('')}</div><h4>${E(t('helpPlatT'))}</h4><div class="plat">${t('helpPlat').map(([n,x],i)=>`<div style="border-left-color:${['#25d366','#ea4335','#0a66c2','#1877f2','#e1306c','#d9b247'][i%6]}"><b>${E(n)}</b>${E(x)}</div>`).join('')}</div>`;
+  let b=`<p class="hi">${E(t('helpBtnT'))}</p>`;
+  t('helpBtn').forEach(([g,items])=>{b+=`<h4>${E(g)}</h4>`+items.map(([n,w,tp])=>`<div class="bc"><span class="bn">${E(n)}</span><div class="bt">${E(w)}<em>${E(t('helpTip'))} ${E(tp)}</em></div></div>`).join('')});
+  const imp=`<h4>${E(t("helpImpT"))}</h4>`+t("helpData").map(([h2,l,c])=>`<h4>${E(h2)}</h4><ol>${l.map(x=>`<li>${E(x)}</li>`).join('')}</ol>`+(c?`<pre class="code" tabindex="0"><code>${E($(c).textContent.trim())}</code></pre><button type="button" class="b cp" data-code="${c}">${E(t('copyCode'))}</button>`:'')).join('');
+  const cur=+(($('hb').dataset.tab)||0);
+  $('hb').innerHTML=`<div class="tabs" role="tablist">${tb.map((x,i)=>`<button type="button" role="tab" data-tab="${i}" aria-selected="${i===cur}">${E(x)}</button>`).join('')}</div>`+[a,b,imp].map((x,i)=>`<div class="pg" role="tabpanel" data-pg="${i}"${i===cur?'':' hidden'}>${x}</div>`).join('')}
+$('hb').addEventListener('click',e=>{const tabB=e.target.closest('.tabs button');if(!tabB)return;const n=tabB.dataset.tab;$('hb').dataset.tab=n;$('hb').querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x.dataset.tab===n));$('hb').querySelectorAll('.pg').forEach(x=>x.hidden=x.dataset.pg!==n);$('hb').scrollTop=0;$('dh').scrollTop=0});
+/* hover tips */
+(function(){
+  const SEL=[['.lang button','lang'],['#q','search'],['#fb','filter'],['#fl [data-f]','chip'],['.key','key'],['#prev','prev'],['#next','next'],['#pull','pull'],['.cqr','cqr'],['#call','call'],['#ping','wa'],['#mail','mail'],['#add','add'],['#scan','scan'],['#edit','edit'],['#addc','addc'],['#qrb','qr'],['#deskb','desk'],['#delall','delall'],['#del','del'],['#pick','pick'],['#rnd','rnd'],['#auto','auto'],['#snd','snd'],['#bk','bk'],['#help','help'],['#reels','reels'],['#inv','inv'],['#dz','dz'],['#cc','cc'],['#pwaBtn','pwa'],['#sq .b','net'],['#fx,#sx,#px','cancel'],['#de button.p','save'],['#dp .chips .b','msgchip'],['#ps','openwa'],['#ss','cap'],['#sp_','photo'],['#qrW','qrwa'],['#qrV','qrsave'],['#bkJ','json'],['#bkV','vcf'],['#bkC','csv'],['#qrX,#bkX,#hx','close'],['#dBack','back'],['#dFl [data-df]','chip'],['#dPull','dpull'],['#dClear','dclear'],['.dpin','dpin'],['.dret','dret'],['#rlX','reelx']];
+  const tp=document.createElement('div');tp.id='tip';tp.setAttribute('popover','manual');tp.setAttribute('role','tooltip');document.body.append(tp);
+  let cur=null;
+  const hide=()=>{cur=null;try{tp.hidePopover()}catch(x){}};
+  const show=el=>{
+    for(const [sel,k] of SEL){const m=el.closest(sel);if(m){const txt=(t('tips')||{})[k];if(!txt)return hide();if(m===cur)return;cur=m;
+      tp.textContent=txt;try{tp.hidePopover()}catch(x){}try{tp.showPopover()}catch(x){}
+      const r=m.getBoundingClientRect(),w=tp.offsetWidth,h=tp.offsetHeight;
+      let x=Math.min(Math.max(8,r.left+r.width/2-w/2),innerWidth-w-8),y=r.top-h-8;if(y<8)y=r.bottom+8;
+      tp.style.left=x+'px';tp.style.top=y+'px';return}}
+    hide()};
+  document.addEventListener('mouseover',e=>{if(e.pointerType==='touch')return;show(e.target)});
+  document.addEventListener('mouseout',e=>{if(!e.relatedTarget||!cur||!cur.contains(e.relatedTarget))hide()});
+  document.addEventListener('focusin',e=>{if(e.target.matches&&e.target.matches(':focus-visible'))show(e.target)});
+  document.addEventListener('focusout',hide);
+  document.addEventListener('click',hide,true);
+  document.addEventListener('scroll',hide,true);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()},true);
+})();
+
 $('hb').addEventListener('click',e=>{const b=e.target.closest('.cp');if(!b)return;const tx=$(b.dataset.code).textContent.trim();
   const ok=()=>toast(t('codeCopied')),fb=()=>{const a=document.createElement('textarea');a.value=tx;a.style.cssText='position:fixed;opacity:0';document.body.append(a);a.select();try{document.execCommand('copy');ok()}catch(x){}a.remove()};
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(tx).then(ok,fb);else fb()});
